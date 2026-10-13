@@ -1,0 +1,55 @@
+:root {
+  --bg: #fbfaf6;
+  --text: #1a1a1a;
+  --muted: #5a5a5a;
+  --line: #c9c6bb;
+  --head-bg: #efede4;
+  --accent: #1d4f7a;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Liberation Serif", serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171a; --text: #e8e6df; --muted: #9a9a94;
+    --line: #3a3d42; --head-bg: #202328; --accent: #8fb8e0;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 1.125rem/1.6 var(--serif); }
+.wrap { max-width: 42rem; margin: 0 auto; padding: 0 16px; }
+a { color: var(--accent); text-underline-offset: 2px; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 0; background: var(--bg); padding: .5rem; z-index: 10; }
+
+.site-header { border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1.5rem; padding-top: .9rem; padding-bottom: .9rem; }
+.brand { font-weight: 700; color: var(--text); text-decoration: none; }
+.site-header ul { display: flex; gap: 1.1rem; list-style: none; margin: 0; padding: 0; font-size: 1rem; }
+.site-header nav a { color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; }
+.site-header nav a:hover { color: var(--text); }
+.site-header nav a[aria-current="page"] { color: var(--text); border-bottom-color: var(--accent); }
+
+h1 { font-size: 2rem; line-height: 1.2; margin: 2rem 0 .75rem; }
+h2 { font-size: 1.4rem; line-height: 1.25; margin: 2.2rem 0 .6rem; padding-bottom: .2rem; border-bottom: 1px solid var(--line); }
+h3 { font-size: 1.15rem; margin: 1.6rem 0 .5rem; }
+h4 { font-size: 1rem; font-style: italic; margin: 1.3rem 0 .4rem; }
+p, ul, ol { margin: 0 0 1rem; }
+li { margin-bottom: .3rem; }
+code { font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
+
+.table-wrap { overflow-x: auto; margin: .5rem 0 1.2rem; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; font-size: .95rem; line-height: 1.45; min-width: 36rem; width: 100%; }
+th, td { border: 1px solid var(--line); padding: .35rem .6rem; vertical-align: top; text-align: left; }
+th { background: var(--head-bg); }
+th:first-child, td:first-child { min-width: 8rem; }
+
+.diagram { overflow-x: auto; margin: 1rem 0 1.5rem; }
+/* On a wide screen the loop breaks out of the text column, up to 68rem. */
+@media (min-width: 48rem) {
+  .diagram { width: min(100vw - 32px, 68rem); margin-left: calc(50% - min(50vw - 16px, 34rem)); }
+}
+pre.mermaid { margin: 0; text-align: center; min-width: 36rem; font-family: var(--mono); font-size: .8rem; }
+
+.site-footer { border-top: 1px solid var(--line); margin-top: 3rem; padding: 1.2rem 0 2.5rem; font-size: .9rem; color: var(--muted); }
+.site-footer p { margin: 0 0 .3rem; }

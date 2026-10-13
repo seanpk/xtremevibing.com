@@ -1,0 +1,7 @@
+# https://editorconfig.org
+root = true
+
+# Markdown uses two trailing spaces to force a hard line break (<br>),
+# notably throughout the poems. Never strip trailing whitespace from Markdown.
+[*.md]
+trim_trailing_whitespace = false

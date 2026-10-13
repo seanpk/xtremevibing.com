@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% set pageTitle = title and (title + " · " + site.title if title != site.title else site.title) or site.title %}
+  {% set desc = description or site.tagline %}
+  {% set canonical = site.url + page.url %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ desc }}">
+  <link rel="canonical" href="{{ canonical }}">
+  <link rel="icon" href="{{ site.icon }}" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title or site.title }}">
+  <meta property="og:description" content="{{ desc }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.ogImage }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="{{ site.twitter }}">
+  <meta name="twitter:title" content="{{ title or site.title }}">
+  <meta name="twitter:description" content="{{ desc }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.ogImage }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">{{ site.title }}</a>
+      <nav aria-label="Primary">
+        <ul>
+          {%- for item in collections.pages %}
+          <li><a href="{{ item.url }}"{% if item.url == page.url %} aria-current="page"{% endif %}>{{ item.data.nav }}</a></li>
+          {%- endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    {{ content | safe }}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      {% if updated %}<p>Updated {{ updated }}</p>{% endif %}
+      <p>{{ site.author }} · <a href="{{ site.repo }}">{{ site.sourceNote }}</a> · <a href="{{ site.twitterUrl }}">{{ site.twitter }} on X</a></p>
+    </div>
+  </footer>
+  {% if mermaid %}
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({startOnLoad:true, securityLevel:"loose", theme:"neutral"});
+  </script>
+  {% endif %}
+</body>
+</html>
