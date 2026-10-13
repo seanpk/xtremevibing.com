@@ -13,11 +13,12 @@ const chrome = process.env.CHROME_PATH ||
   join(homedir(), '.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell');
 
 const html = `<!doctype html><meta charset="utf-8"><style>
-  body{margin:0;width:1200px;height:630px;background:#fbfaf6;color:#1a1a1a;font-family:Georgia,"Liberation Serif",serif;
-       display:flex;flex-direction:column;justify-content:center;padding:0 90px;box-sizing:border-box;border-left:18px solid #1d4f7a}
-  h1{font-size:112px;margin:0 0 28px;letter-spacing:-2px}
-  p{font-size:38px;line-height:1.35;margin:0;max-width:960px;color:#333}
-  small{position:absolute;left:108px;bottom:50px;font-size:28px;color:#5a5a5a;font-family:ui-monospace,monospace}
+  body{margin:0;width:1200px;height:630px;background:#fbf9f6;color:#241f2b;font-family:Georgia,"Liberation Serif",serif;
+       display:flex;flex-direction:column;justify-content:center;padding:0 90px;box-sizing:border-box;border-left:18px solid #5b2d82}
+  h1{font-size:112px;margin:0 0 10px;letter-spacing:-2px;color:#5b2d82}
+  h1::after{content:"";display:block;width:120px;height:10px;margin:18px 0 28px;background:#6f9b3c;border-radius:5px}
+  p{font-size:38px;line-height:1.35;margin:0;max-width:960px;color:#3d3547}
+  small{position:absolute;left:108px;bottom:50px;font-size:28px;color:#655c70;font-family:ui-monospace,monospace}
 </style><h1>Xtreme Vibing</h1>
 <p>Notes on carrying Extreme Programming into software that agents write and people are responsible for.</p>
 <small>xtremevibing.com</small>`;
