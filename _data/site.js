@@ -8,5 +8,5 @@ export default {
   icon: "/favicon.svg",
   ogImage: "/og.png",
   repo: "https://github.com/seanpk/xtremevibing.com",
-  sourceNote: "Source and discussion on GitHub",
+  sourceNote: "Source on GitHub",
 };

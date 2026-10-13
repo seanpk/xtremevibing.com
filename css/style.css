@@ -44,6 +44,22 @@ h4 { font-size: 1rem; font-style: italic; margin: 1.3rem 0 .4rem; }
 p, ul, ol { margin: 0 0 1rem; }
 li { margin-bottom: .3rem; }
 code { font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
+img { max-width: 100%; height: auto; }
+/* A figure on its own line: scrolls sideways on a phone, breaks out of the column on a wide screen. */
+p:has(> img:only-child) { overflow-x: auto; margin: 1.2rem 0 1.5rem; -webkit-overflow-scrolling: touch; }
+p > img:only-child { display: block; min-width: 40rem; margin: 0 auto; border: 1px solid var(--line); border-radius: 12px; }
+@media (min-width: 48rem) {
+  p:has(> img:only-child) { width: min(100vw - 32px, 60rem); margin-left: calc(50% - min(50vw - 16px, 30rem)); }
+  p > img:only-child { min-width: 0; }
+}
+
+/* "#" links: faint until the heading or row is hovered; a click copies the address. */
+a.anchor { color: var(--muted); text-decoration: none; font-weight: 400; opacity: .35; position: relative; }
+h2:hover a.anchor, h3:hover a.anchor, tr:hover a.anchor, a.anchor:focus { opacity: 1; color: var(--green); }
+a.anchor.copied::after { content: "copied"; position: absolute; left: 1.2em; top: 0; font-size: .7rem; font-family: var(--mono); color: var(--green); white-space: nowrap; }
+:target { scroll-margin-top: 1rem; }
+tr:target td { background: var(--green-soft); }
+h2:target, h3:target { color: var(--green); }
 
 .table-wrap { overflow-x: auto; margin: .5rem 0 1.2rem; -webkit-overflow-scrolling: touch; }
 table { border-collapse: collapse; font-size: .95rem; line-height: 1.45; min-width: 36rem; width: 100%; }

@@ -46,6 +46,17 @@
       <p>{{ site.author }} · <a href="{{ site.repo }}">{{ site.sourceNote }}</a> · <a href="{{ site.twitterUrl }}">{{ site.twitter }} on X</a></p>
     </div>
   </footer>
+  <script>
+    // A click on a "#" link also copies the full address, then follows the hash as usual.
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a.anchor");
+      if (!a || !navigator.clipboard) return;
+      navigator.clipboard.writeText(location.origin + location.pathname + a.getAttribute("href")).then(() => {
+        a.classList.add("copied");
+        setTimeout(() => a.classList.remove("copied"), 1500);
+      });
+    });
+  </script>
   {% if mermaid %}
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";

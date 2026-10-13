@@ -34,6 +34,21 @@ Agents write the code. People rank the work, keep the pitch, sit with users, and
 
 Work tends to come in bursts. A burst is a run of changes toward one direction the team has named. The shape conversation opens before a burst, to make the change easy, and as it ends, to ask what the burst left behind. Between bursts the team is with users. Nothing is built until the use has been observed. The loop below is one turn inside a burst. (Section 16)
 
+## Observe, orient, decide, act
+
+The loop is Boyd's OODA loop, simplified: four moves, and in each one both people and the harness have a part. The figure draws the four moves. The diagram under it draws the same loop by who acts, and the steps after that are the order of one turn.
+
+| Move | People | The harness |
+| --- | --- | --- |
+| Observe | Sit with users. Contact is the act. | Gathers telemetry, monitoring, errors, and feedback into the packet. |
+| Orient | Hold the shared operating picture, the pitch, and the shape. | Holds the test suite, what must stay true, and the standards, what we have learned. |
+| Decide | Rank the value queue. State the scenario. Choose a prototype, or none. Decide the shape, in conversation. Decide from evidence and Lead with conviction say which of these takes two people and which takes one. | Enforces what a test or a standard settles. It does not decide. |
+| Act | Watch the first run. Accept and merge. No second approver. | Red first. Make it work within the wall, make it right, guard. Build, deploy, revert. |
+
+![The four moves, with what people do and what the harness does in each](/images/loop-moves.svg)
+
+The factory is the Act move only (section 17). The constraint on the loop is steering, not build speed. The harness stops inside Act and hands back to a person when the budget is spent, a test or the picture changed, or the shape or the pitch would change. That is Own the result: the harness may stop and may not decide.
+
 ## The loop
 
 Green boxes are people. White boxes are the harness. Amber boxes are real use. A dashed box runs only when needed. A dashed arrow is a decision the harness hands back to a person, or the automatic revert.
