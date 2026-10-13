@@ -25,7 +25,18 @@ npm run og        # regenerate static/og.png (needs Playwright's Chromium)
 
 ## Deployment
 
-Connect this repo to Cloudflare Workers Builds. Build command `npm run build`, deploy command
-`npx wrangler deploy`. The Worker name must match `name` in `wrangler.toml` (`xtremevibing-com`).
-Then add the custom domain `xtremevibing.com` (and `www`) under the Worker's Settings, Domains &
-Routes. `wrangler.toml` has no account id or routes on purpose. A push to `master` publishes.
+Four hostnames point at one Worker: `xtremevibing.com`, `www.xtremevibing.com`, `extremevibing.com`
+and `www.extremevibing.com`. They are Custom Domains in `wrangler.toml`, so `npx wrangler deploy`
+creates their DNS records. `src/index.js` runs on every request and sends any host other than the
+apex to the same path on `https://xtremevibing.com`; the apex serves `_site`.
+
+First deploy, from a machine where `npx wrangler login` has been run:
+
+```
+npm run build
+npx wrangler deploy
+```
+
+After that, connect this repo to Cloudflare Workers Builds so a push to `master` publishes: build
+command `npm run build`, deploy command `npx wrangler deploy`. The Worker name must match `name` in
+`wrangler.toml` (`xtremevibing-com`). `wrangler.toml` has no account id on purpose.

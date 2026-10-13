@@ -1,11 +1,22 @@
 name = "xtremevibing-com"
+main = "src/index.js"
 compatibility_date = "2026-10-12"
+workers_dev = true
 
-# No account_id and no routes on purpose: the custom domain (xtremevibing.com
-# and www) is attached in the Cloudflare dashboard under the Worker's
-# Settings -> Domains & Routes.
+# No account_id on purpose: the login that deploys this has one account.
+# The four hostnames are Custom Domains, so `wrangler deploy` creates their
+# DNS records in the two zones (both in the same Cloudflare account). The
+# Worker in src/index.js sends every host but the apex to xtremevibing.com.
+routes = [
+  { pattern = "xtremevibing.com", custom_domain = true },
+  { pattern = "www.xtremevibing.com", custom_domain = true },
+  { pattern = "extremevibing.com", custom_domain = true },
+  { pattern = "www.extremevibing.com", custom_domain = true },
+]
 
 [assets]
 directory = "./_site"
+binding = "ASSETS"
+run_worker_first = true
 html_handling = "auto-trailing-slash"
 not_found_handling = "404-page"
