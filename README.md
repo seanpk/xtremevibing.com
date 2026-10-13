@@ -25,18 +25,18 @@ npm run og        # regenerate static/og.png (needs Playwright's Chromium)
 
 ## Deployment
 
-Four hostnames point at one Worker: `xtremevibing.com`, `www.xtremevibing.com`, `extremevibing.com`
-and `www.extremevibing.com`. They are Custom Domains in `wrangler.toml`, so `npx wrangler deploy`
-creates their DNS records. `src/index.js` runs on every request and sends any host other than the
-apex to the same path on `https://xtremevibing.com`; the apex serves `_site`.
+Four hostnames point at one Worker, `xtremevibing-com`: `xtremevibing.com`, `www.xtremevibing.com`,
+`extremevibing.com` and `www.extremevibing.com`. They are Custom Domains, attached in Cloudflare and
+named in `wrangler.toml`. `src/index.js` runs on every request and sends any host other than the apex
+to the same path on `https://xtremevibing.com`; the apex serves `_site`.
 
-First deploy, from a machine where `npx wrangler login` has been run:
+**A push to `master` publishes.** `.github/workflows/deploy.yml` builds the site and runs
+`npx wrangler deploy` with two repository secrets: `CLOUDFLARE_API_TOKEN` (a token that can edit
+Workers in the account that holds the zones) and `CLOUDFLARE_ACCOUNT_ID`. Cloudflare's own Workers
+Builds is not used, because that GitHub app is tied to a different Cloudflare account for this
+GitHub user. The same two commands work from a machine where `npx wrangler login` has been run:
 
 ```
 npm run build
 npx wrangler deploy
 ```
-
-After that, connect this repo to Cloudflare Workers Builds so a push to `master` publishes: build
-command `npm run build`, deploy command `npx wrangler deploy`. The Worker name must match `name` in
-`wrangler.toml` (`xtremevibing-com`). `wrangler.toml` has no account id on purpose.
