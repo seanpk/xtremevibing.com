@@ -86,7 +86,7 @@ Nobody reads the code to accept a change. They read the packet: the scenario in 
 
 A change to an agent's brief, its may-not list, a standing order, or any check it is judged by is Decide from evidence by default: two people, written down short. A team may name cases where Lead with conviction is the better answer, and naming a case is itself a two-person decision. One learned rule inside the current brief is one person's call. An agent never accepts its own change.
 
-What a team adds to shape the agents for its own system lives in its own files, beside the shared skills. It is add-only against the core: it may add a rule, a fact, an example, or a standing order, and it may not relax the contexts kept apart, the scenario agent is never the maker, the recorded move, the guardian's four checks, the stops, or the may-not lists. (Section 19)
+What a team adds to shape the agents for its own system is the project layer: project-local, committed in the repo, shared by everyone on the project and every harness they use. It is add-only against the core: it may add a rule, a fact, an example, or a standing order, and it may not relax the contexts kept apart, the scenario agent is never the maker, the recorded move, the guardian's four checks, the stops, or the may-not lists. Each entry carries the miss it came from, and the entries are read before a burst and as it ends; one whose miss no longer happens without it is deleted. (Sections 16, 19)
 
 ## Left to the team
 
