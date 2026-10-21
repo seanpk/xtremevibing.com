@@ -31,11 +31,11 @@ What it does:
 
 - Knows the state of every slice. What ran, what it made, what it spent, what moved.
 - Calls the next agent with a brief and a fresh context. The forecaster before the work. The scenario agent for red. The maker, the cleaner, and the guardian, one after another. The build. The listener, in production.
-- Keeps the log, and keeps it visible to anyone who needs it. The maker's record of a moved test. The cleaner's commit. The guardian's packet. The actual spend against the budget. The form of the log is the team's.
+- Keeps the log, and keeps it visible to anyone who needs it. The log is one slice record per slice, with named fields: the scenario, who set the work going, the forecast, the wall baseline, moved tests and why, the cleaner's commit, the guardian's packet, the actual spend, each stop raised and who answered, the decision record. The home of the record is the team's: a file in the repo, a pull request, an issue.
 - Wakes a person on a standing order. The orders are the stops in the loop ([the loop](/loop/), "Where the watch wakes a person"). A stop waits for the person. The packet from production does not wait; the watch hands it over and goes on.
 - Records who took part in a decision, so the team knows who holds the context. Not for blame. (Section 6)
 
-What it never does: merge, rank the value queue, settle a shape, edit the pitch, or raise a budget. If it did any of these, it would be the approve button the method left out, or the product owner it dropped.
+What it never does: merge, rank the value queue, settle a shape, edit the pitch, raise a budget, or edit its own standing orders. If it did any of these, it would be the approve button the method left out, or the product owner it dropped.
 
 The watch has standing orders for three seats:
 
@@ -49,13 +49,13 @@ The watch has standing orders for three seats:
 
 Each agent runs in its own context. It sees its brief, what the watch gives it, and what it pulls from the repo and the shared operating picture. It does not see the other agents' reasoning.
 
-**The forecaster.** Before the work, it forecasts the budget for the slice with the engineer who will be responsible for it: tokens, time, and an expectation of shape change and its breadth. A human does not estimate tokens. After the work, it corrects the estimation guide from what the run actually spent, so the next similar slice starts from the corrected number. It may not raise a budget during the work. That is the engineer's call under Lead with conviction. (Section 13)
+**The forecaster.** Before the work, it forecasts the budget for the slice with the engineer who will be responsible for it: tokens, time, and an expectation of shape change and its breadth. A human does not estimate tokens. The forecast goes into the slice record. The watch writes the actual spend into the same record as the work runs. When the slice closes, the forecaster appends one entry to the estimation guide: the slice, the forecast, the actual, the gap, one line on why. No acceptance before the write; it rides in the next packet, and anyone reverts. The guide is a list of closed slices and is never edited in place. It may not raise a budget during the work. That is the engineer's call under Lead with conviction. (Section 13)
 
 **The scenario agent.** It makes the scenario executable, as a Playwright trace or an API sequence, and shows it fail before the fix. For a defect it starts from a recording. For a new feature it starts from words, and the first passing run is watched by a person, who adds the case they only noticed by seeing the wrong thing. It is never the maker. A context that writes the red and then makes it green is agreeing with itself. (Section 1)
 
 **The maker.** It makes it work, behind the test wall. Green means the new scenario plus every existing test. It may move an old test when the scenario forces it, and it records which assertion moved and why. An unrecorded change or deletion is the cheat. If the budget runs out without green, it stops. It does not renovate. With a prototype brief it builds one of three running versions that differ on one named axis, with no wall and a loose model; that context is never the one that builds the pick. (Sections 1, 2, 5, 13)
 
-**The cleaner.** It makes it right. In a separate context, it fixes structure and style against the standards file and commits the fix. It keeps changes to old tests as small as they can be, and it rejects a real test turned into a fake one. A structural change and a behavior change do not ride in the same pass. It holds the standards file: rules earned by repeated misses, applied without a person approving each fix. A cleanup that would add an abstraction is not a cleanup. It is a shape proposal, and it goes to people. (Sections 1, 5, 14)
+**The cleaner.** It makes it right. In a separate context, it fixes structure and style against the standards file and commits the fix. It keeps changes to old tests as small as they can be, and it rejects a real test turned into a fake one. A structural change and a behavior change do not ride in the same pass. It holds the standards file: rules earned by repeated misses, applied without a person approving each fix. It never adds or removes a standard; a standard enters when the person who set the work going accepts it from the packet. A cleanup that would add an abstraction is not a cleanup. It is a shape proposal, and it goes to people. (Sections 1, 5, 14)
 
 **The guardian.** In a third context, with an adversarial brief, it checks for four things: a shape change, a contradiction of the pitch, any old test that changed, and what the change does to the shared operating picture. It draws the boundary picture for the packet, because it did not build the change. It produces one packet for the proposed change, however many tests moved. A shape change or a pitch contradiction stops the change for two people. Changed tests and picture changes alone go to the person who set the work going. Agreement that does not cite evidence does not count. Security and usability agents are guardian-kind agents with a different question. They give findings. None of them merge. (Sections 1, 3, 15)
 
@@ -83,7 +83,7 @@ Nobody reads the code to accept a change. They read the packet: the scenario in 
 
 ## Left to the team
 
-- The form of the log, and how a person is reached. A file, a channel, a board. The watch needs to know what was done. It does not prescribe how the team sees it.
+- The home of the slice record, and how a person is reached. A file in the repo, a pull request, an issue. The fields are fixed; the home is not.
 - What a brief contains, beyond the scenario, the budget, and the parts of the shared operating picture that apply.
 - How many of each kind to run, and which model runs which.
-- The skills that implement the agents. Parked in the open questions.
+- The skills that implement the agents. The plan is `plans/xv-agents-2026-10-21.md`: skills any harness can read, scripts and CI examples for the mechanical parts, no agent-specific distribution.
