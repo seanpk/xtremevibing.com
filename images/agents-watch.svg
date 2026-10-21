@@ -1,0 +1,151 @@
+<svg viewBox="0 0 1280 880" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The watch sits between the people and the agents. It calls each agent in turn and takes every result into the log. On a standing order it wakes a person and waits. It never decides." font-family="Iowan Old Style, Palatino Linotype, Palatino, P052, Liberation Serif, DejaVu Serif, Georgia, serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b2d82"/>
+    </marker>
+    <marker id="arr-dash" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6f9b3c"/>
+    </marker>
+    <marker id="arr-thin" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8f879a"/>
+    </marker>
+    <style>
+      .box { fill: #faf8fc; stroke: #c9bedb; stroke-width: 2.5; }
+      .pbox { fill: #f4f9ee; stroke: #b9d39a; stroke-width: 2.5; }
+      .wbox { fill: #f1eaf8; stroke: #5b2d82; stroke-width: 3; }
+      .move { font-size: 22px; font-weight: 700; fill: #5b2d82; }
+      .name { font-size: 20px; font-weight: 700; fill: #5b2d82; }
+      .pname { font-size: 20px; font-weight: 700; fill: #4f7a22; }
+      .who { font-size: 15px; letter-spacing: .08em; text-transform: uppercase; font-family: ui-monospace, Menlo, Consolas, monospace; }
+      .people { fill: #4f7a22; }
+      .harness { fill: #655c70; }
+      .line { font-size: 19px; fill: #241f2b; }
+      .small { font-size: 16px; fill: #241f2b; }
+      .note { font-size: 16px; fill: #655c70; font-style: italic; }
+      .arrow { stroke: #5b2d82; stroke-width: 3; fill: none; }
+      .stop { stroke: #6f9b3c; stroke-width: 3; fill: none; stroke-dasharray: 10 8; }
+      .thin { stroke: #8f879a; stroke-width: 2; fill: none; }
+      .stoplbl { font-size: 16px; fill: #4f7a22; }
+      .calllbl { font-size: 16px; fill: #5b2d82; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1280" height="880" rx="18" fill="#ffffff"/>
+
+  <!-- People -->
+  <text class="who people" x="40" y="34">People</text>
+
+  <rect class="pbox" x="40" y="46" width="384" height="190" rx="14"/>
+  <text class="pname" x="64" y="80">The person who set the work going</text>
+  <text class="line" x="64" y="112">Forecasts the budget with the forecaster.</text>
+  <text class="line" x="64" y="140">Watches the first run.</text>
+  <text class="line" x="64" y="168">Accepts moved tests and the picture.</text>
+  <text class="line" x="64" y="196">Merges. Answers production first.</text>
+
+  <rect class="pbox" x="448" y="46" width="384" height="190" rx="14"/>
+  <text class="pname" x="472" y="80">Two or more people</text>
+  <text class="line" x="472" y="112">Decide from evidence, on the packet.</text>
+  <text class="line" x="472" y="140">Pick a prototype, or none.</text>
+  <text class="line" x="472" y="168">Decide the shape. Settle the pitch.</text>
+  <text class="line" x="472" y="196">The decision is written and binds.</text>
+
+  <rect class="pbox" x="856" y="46" width="384" height="190" rx="14"/>
+  <text class="pname" x="880" y="80">The chief engineer, with users</text>
+  <text class="line" x="880" y="112">Sits with users. Reads the packet.</text>
+  <text class="line" x="880" y="140">Ranks the value queue.</text>
+  <text class="line" x="880" y="168">A ranking with neither is void.</text>
+  <text class="line" x="880" y="196">Does not hold the corpus.</text>
+
+  <!-- Standing orders: the watch wakes a person -->
+  <path class="stop" d="M64,352 L64,240" marker-end="url(#arr-dash)"/>
+  <text class="stoplbl" x="78" y="268">budget spent, no green</text>
+  <text class="stoplbl" x="78" y="290">a test or the picture moved</text>
+  <text class="stoplbl" x="78" y="312">green and no stop: merge is yours</text>
+
+  <path class="stop" d="M472,352 L472,240" marker-end="url(#arr-dash)"/>
+  <text class="stoplbl" x="486" y="268">three prototypes to pick from</text>
+  <text class="stoplbl" x="486" y="290">shape change, pitch contradiction</text>
+  <text class="stoplbl" x="486" y="312">budget past the team's limit</text>
+
+  <path class="stop" d="M880,352 L880,240" marker-end="url(#arr-dash)"/>
+  <text class="stoplbl" x="894" y="268">the packet from real use</text>
+  <text class="stoplbl" x="894" y="290">a slow check failed: main reverts,</text>
+  <text class="stoplbl" x="894" y="312">a defect joins the value queue</text>
+
+  <!-- The watch -->
+  <rect class="wbox" x="40" y="356" width="1200" height="158" rx="14"/>
+  <text class="move" x="64" y="392">The watch</text>
+  <text class="who harness" x="190" y="392">keeps the deck while the captain sleeps</text>
+  <text class="line" x="64" y="426">Knows the state of every slice: what ran, what it made, what it spent, what moved.</text>
+  <text class="line" x="64" y="454">Calls the next agent with a brief and a fresh context. Keeps the log, visible to anyone who needs it.</text>
+  <text class="line" x="64" y="482">Wakes a person on a standing order. A stop waits; the packet does not. Records who took part. It never decides.</text>
+
+  <!-- Calls: the watch calls each agent, every result returns to the log -->
+  <path class="arrow" d="M125,518 L125,598" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <path class="arrow" d="M297,518 L297,598" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <path class="arrow" d="M469,518 L469,598" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <path class="arrow" d="M641,518 L641,598" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <path class="arrow" d="M813,518 L813,598" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <path class="arrow" d="M985,518 L985,598" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <path class="arrow" d="M1157,518 L1157,598" marker-start="url(#arr)" marker-end="url(#arr)"/>
+
+  <rect x="340" y="540" width="600" height="26" fill="#ffffff"/>
+  <text class="calllbl" x="640" y="558" text-anchor="middle">calls each in turn, with a fresh context; every result comes back into the log</text>
+
+  <!-- Agents -->
+
+  <rect class="box" x="40" y="602" width="160" height="150" rx="12"/>
+  <text class="name" x="56" y="632">Forecaster</text>
+  <text class="small" x="56" y="660">The budget, with</text>
+  <text class="small" x="56" y="682">the engineer, before.</text>
+  <text class="small" x="56" y="704">Learns from the</text>
+  <text class="small" x="56" y="726">real spend, after.</text>
+
+  <rect class="box" x="212" y="602" width="160" height="150" rx="12"/>
+  <text class="name" x="228" y="632">Scenario agent</text>
+  <text class="small" x="228" y="660">Makes the scenario</text>
+  <text class="small" x="228" y="682">run. Shows it red.</text>
+  <text class="small" x="228" y="704">Never the maker.</text>
+
+  <rect class="box" x="384" y="602" width="160" height="150" rx="12"/>
+  <text class="name" x="400" y="632">Maker</text>
+  <text class="small" x="400" y="660">Makes it work,</text>
+  <text class="small" x="400" y="682">behind the wall.</text>
+  <text class="note" x="400" y="710">Or a prototype:</text>
+  <text class="note" x="400" y="730">no wall, one axis.</text>
+
+  <rect class="box" x="556" y="602" width="160" height="150" rx="12"/>
+  <text class="name" x="572" y="632">Cleaner</text>
+  <text class="small" x="572" y="660">Makes it right.</text>
+  <text class="small" x="572" y="682">Commits. Holds the</text>
+  <text class="small" x="572" y="704">standards file.</text>
+
+  <rect class="box" x="728" y="602" width="160" height="150" rx="12"/>
+  <text class="name" x="744" y="632">Guardian</text>
+  <text class="small" x="744" y="660">Shape, pitch, tests,</text>
+  <text class="small" x="744" y="682">picture. The packet.</text>
+  <text class="note" x="744" y="710">Or security,</text>
+  <text class="note" x="744" y="730">usability, review.</text>
+
+  <rect class="box" x="900" y="602" width="160" height="150" rx="12"/>
+  <text class="name" x="916" y="632">Build, deploy</text>
+  <text class="small" x="916" y="660">Not an agent.</text>
+  <text class="small" x="916" y="682">Minutes, or failed.</text>
+  <text class="small" x="916" y="704">Slow checks after.</text>
+  <text class="small" x="916" y="726">A fail reverts.</text>
+
+  <rect class="box" x="1072" y="602" width="168" height="150" rx="12"/>
+  <text class="name" x="1088" y="632">Listener</text>
+  <text class="small" x="1088" y="660">Telemetry, errors,</text>
+  <text class="small" x="1088" y="682">feedback, into</text>
+  <text class="small" x="1088" y="704">the packet.</text>
+  <text class="small" x="1088" y="726">May not rank.</text>
+
+  <!-- Order of one turn -->
+  <path class="thin" d="M202,770 L1070,770" marker-end="url(#arr-thin)"/>
+  <text class="who harness" x="40" y="800">The agents, one context each</text>
+  <text class="note" x="1060" y="800" text-anchor="end">the order of one turn: forecast, red, work, right, guard, build, then listen in production</text>
+
+  <!-- Legend -->
+  <text class="small" x="40" y="848">Solid: the watch calls an agent and takes its result into the log.</text>
+  <text class="small" x="640" y="848">Dashed: a standing order. The watch puts it in front of a person.</text>
+</svg>

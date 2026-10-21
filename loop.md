@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-10-12"
+updated: "2026-10-21"
 permalink: /loop/
 nav: Loop
 order: 3
@@ -14,7 +14,7 @@ mermaid: true
 
 Section numbers point into the working notes behind these pages. The notes are not published.
 
-Agents write the code. People rank the work, keep the pitch, sit with users, and decide the shape. The harness enforces the rest. The harness is the agents, the test suite, and the pipeline. Nobody approves the merge, and work finishes in production.
+Agents write the code. People rank the work, keep the pitch, sit with users, and decide the shape. The harness enforces the rest. The harness is the agents, the test suite, and the pipeline. The watch is the agent that runs the pipeline: it calls each agent in turn, keeps the log, and wakes a person on a standing order. It never decides. The agents are drawn in [the agents](/agents/). Nobody approves the merge, and work finishes in production.
 
 ## Before the work starts
 
@@ -58,16 +58,16 @@ flowchart TB
   subgraph People["People decide"]
     picture["The shared operating picture<br/>users, system, ideas"]
     rank["Rank the value queue<br/>one person"]
-    take["Take the task<br/>any teammate"]
+    take["Take the task<br/>any teammate, budget with the forecaster"]
     choose["Choose one, or none<br/>two people"]
     decide["Person decides<br/>budget, tests, or the picture"]
     shape["Decide the shape<br/>in conversation"]
     merge["Accept and merge<br/>originator, no approver"]
   end
 
-  subgraph Harness["The harness enforces"]
+  subgraph Harness["The harness enforces, the watch runs"]
     protos["Three prototypes<br/>one named axis"]
-    red["Red first<br/>fails, budget set"]
+    red["Red first<br/>the scenario agent, never the maker"]
     maker["Maker<br/>makes it work, behind the wall"]
     cleaner["Cleaner<br/>makes it right, commits"]
     guardian["Guardian<br/>shape, pitch, tests, picture"]
@@ -96,7 +96,7 @@ flowchart TB
   slow -- "pass" --> users
   slow -. "fail: main reverts, defect to the value queue" .-> rank
   users --> feedback
-  feedback -- "agents gather it" --> packet
+  feedback -- "the listener gathers it" --> packet
   packet -- "people read it" --> rank
   users -- "contact: sit with users" --> picture
   maker -. "budget spent" .-> decide
@@ -117,20 +117,22 @@ The only gates on the way to production are machine gates: red before green, the
 
 ## The steps
 
+The watch calls every harness step below, in turn, each agent in a fresh context, and takes the result into the log. Where a step says a person decides, the watch has woken them and is waiting.
+
 1. Rank the value queue. People. One person ranks by customer value, so the product stays one product. A conflict between users and the people paying stops the ranking and leaves the team. (Section 8)
-2. Take the next task. People and harness. Any teammate takes it. They know who it is for, and they may refuse it. The scenario is stated in words, with what this slice may ignore. A defect comes as a recording. The agent forecasts a budget with that person. (Sections 1, 8, 13)
+2. Take the next task. People and harness. Any teammate takes it. They know who it is for, and they may refuse it. The scenario is stated in words, with what this slice may ignore. A defect comes as a recording. The forecaster forecasts a budget with that person. (Sections 1, 8, 13)
 3. Prototype, if the design is open. Harness and people. Only when the scenario does not settle the design, and a wrong design would be felt in use. Agents build three running versions that differ on one named axis. At least two people name which difference mattered, with a user when one can be reached. One is chosen, or none. The choice is restated as the scenario. The other runs are discarded. A prototype may run in production for a few real users when that is the only way to learn, and it is still discarded at the pick. (Sections 2, 9)
-4. Red first. Harness. An agent makes the scenario executable, as a Playwright trace or an API sequence, and shows it fails before the fix. (Section 1)
+4. Red first. Harness. The scenario agent, never the maker, makes the scenario executable, as a Playwright trace or an API sequence, and shows it fails before the fix. (Section 1)
 5. Make it work. Harness. The maker builds behind the wall. Green means the new scenario plus every existing test. The maker may move an old test when the scenario forces it, and records why. If the budget runs out without green, the work stops and a person decides. (Sections 1, 13)
 6. Make it right, then guard. Harness. The cleaner, in a separate context, fixes structure and style against the standards file and commits the fix. It keeps changes to old tests small and rejects a real test turned fake. Structure and behavior do not ride in one pass. The guardian, in a third context, checks for a shape change, a pitch contradiction, a changed test, and what the change does to the shared operating picture. A shape change or pitch contradiction stops the change for two people. Changed tests and picture changes alone go in the packet to the person who set the work going, who may opt into a conversation. Security and usability agents give findings. None of them merge. (Sections 1, 3, 14)
 7. Fast build. Harness. The merge waits on a suite that returns in minutes. A skipped or timed-out suite is a failed build. (Section 11)
 8. Accept and merge. People. The person who set the work going watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in. No second person approves. That is Ship at will. (Sections 6, 9)
 9. Deploy to production. Harness. Production is the default, in slices small enough to revert. Slow checks run after the merge. If one fails, the pipeline reverts the main line and raises a new defect. The team takes the next task. Nobody stands on the deploy. (Sections 10, 11, 12)
-10. Back to the shared operating picture. Real use and people. Telemetry, errors, and user feedback bring the change back. Agents gather the packet. People read it and sit with users. A ranking or shape decision with neither a recent session nor a packet from real use is void. When production raises its hand, the person who set the work going answers first, and any teammate may answer in their place. (Sections 3, 9, 12)
+10. Back to the shared operating picture. Real use and people. Telemetry, errors, and user feedback bring the change back. The listener gathers the packet. People read it and sit with users. A ranking or shape decision with neither a recent session nor a packet from real use is void. When production raises its hand, the person who set the work going answers first, and any teammate may answer in their place. (Sections 3, 9, 12)
 
 ## Where the harness hands back
 
-The harness does not decide these. It stops and puts the decision in front of a person. That is Own the result: a person is responsible for every change, including one made entirely by agents.
+The harness does not decide these. These are the watch's standing orders. It stops and puts the decision in front of a person. That is Own the result: a person is responsible for every change, including one made entirely by agents.
 
 | The harness sees | What happens | Section |
 | --- | --- | --- |
