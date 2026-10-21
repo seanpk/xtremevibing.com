@@ -32,7 +32,8 @@ What it does:
 - Knows the state of every slice. What ran, what it made, what it spent, what moved.
 - Calls the next agent with a brief and a fresh context. The forecaster before the work. The scenario agent for red. The maker, the cleaner, and the guardian, one after another. The build. The listener, in production.
 - Keeps the log, and keeps it visible to anyone who needs it. The log is one slice record per slice, with named fields: the scenario, who set the work going, the forecast, the wall baseline, moved tests and why, the cleaner's commit, the guardian's packet, the actual spend, each stop raised and who answered, the decision record. The home of the record is the team's: a file in the repo, a pull request, an issue.
-- Wakes a person on a standing order. The orders are the stops in the loop ([the loop](/loop/), "Where the watch wakes a person"). A stop waits for the person. The packet from production does not wait; the watch hands it over and goes on.
+- Wakes a person on a standing order. The orders are the stops in the loop ([the loop](/loop/), "Where the watch wakes a person"), and they are scripts, not prose, so a check can fail and CI can run it. On a stop the watch writes the record, puts the question in front of the seat, and ends its turn with its context kept. The packet from production does not wait; the watch hands it over and goes on.
+- Is started by a person, from their own session: "run this slice". A headless form runs the same steps where there is nobody to wait for, as in CI, and exits with the packet. The slice record carries the resume either way.
 - Records who took part in a decision, so the team knows who holds the context. Not for blame. (Section 6)
 
 What it never does: merge, rank the value queue, settle a shape, edit the pitch, raise a budget, or edit its own standing orders. If it did any of these, it would be the approve button the method left out, or the product owner it dropped.
@@ -80,6 +81,12 @@ Two or more people decide from evidence on the packet: which prototype, or none;
 The chief engineer sits with users and reads the packet, and ranks the value queue from both. A ranking with neither is void. (Sections 8, 9)
 
 Nobody reads the code to accept a change. They read the packet: the scenario in words, the recording, the boundary picture, what the suite asserts after the change, and the raw data when they want it. (Section 3)
+
+## Changing an agent
+
+A change to an agent's brief, its may-not list, a standing order, or any check it is judged by is Decide from evidence by default: two people, written down short. A team may name cases where Lead with conviction is the better answer, and naming a case is itself a two-person decision. One learned rule inside the current brief is one person's call. An agent never accepts its own change.
+
+What a team adds to shape the agents for its own system lives in its own files, beside the shared skills. It is add-only against the core: it may add a rule, a fact, an example, or a standing order, and it may not relax the contexts kept apart, the scenario agent is never the maker, the recorded move, the guardian's four checks, the stops, or the may-not lists. (Section 19)
 
 ## Left to the team
 
