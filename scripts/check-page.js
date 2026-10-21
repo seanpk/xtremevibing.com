@@ -14,7 +14,7 @@ if (!existsSync(SITE)) {
 }
 const read = (p) => readFileSync(join(SITE, p), 'utf8');
 
-const pages = { 'index.html': '/', 'map/index.html': '/map/', 'loop/index.html': '/loop/' };
+const pages = { 'index.html': '/', 'map/index.html': '/map/', 'loop/index.html': '/loop/', 'agents/index.html': '/agents/' };
 for (const [file, path] of Object.entries(pages)) {
   if (!existsSync(join(SITE, file))) { fail(`missing page: ${file}`); continue; }
   const h = read(file);
@@ -23,7 +23,8 @@ for (const [file, path] of Object.entries(pages)) {
   if (!/property="og:image" content="https:\/\/[^"]+"/.test(h)) fail(`${file}: no absolute og:image`);
   if (!h.includes(`<link rel="canonical" href="https://xtremevibing.com${path}">`)) fail(`${file}: bad canonical`);
   const nav = (h.match(/<nav aria-label="Primary">[\s\S]*?<\/nav>/) || [''])[0];
-  if ((nav.match(/<a /g) || []).length !== 3) fail(`${file}: nav should have 3 links`);
+  const want = Object.keys(pages).length;
+  if ((nav.match(/<a /g) || []).length !== want) fail(`${file}: nav should have ${want} links`);
   if (!nav.includes(`href="${path}" aria-current="page"`)) fail(`${file}: current page not marked in nav`);
   if (!/Updated \d{4}-\d{2}-\d{2}/.test(h)) fail(`${file}: no Updated date`);
 }
