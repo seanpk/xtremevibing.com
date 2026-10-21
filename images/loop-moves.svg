@@ -1,4 +1,4 @@
-<svg viewBox="0 0 1136 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The delivery loop as four moves: observe, orient, decide, act. Each move says what people do and what the harness does. A dashed line from Act back to Decide is where the harness stops for a person." font-family="Iowan Old Style, Palatino Linotype, Palatino, P052, Liberation Serif, DejaVu Serif, Georgia, serif">
+<svg viewBox="0 0 1136 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The delivery loop as four moves: observe, orient, decide, act. Each move says what people do and what the harness does, naming the agent. A dashed line from Act back to Decide is where the watch stops for a person." font-family="Iowan Old Style, Palatino Linotype, Palatino, P052, Liberation Serif, DejaVu Serif, Georgia, serif">
   <defs>
     <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#5b2d82"/>
@@ -26,8 +26,8 @@
   <text class="who people" x="70" y="88">People</text>
   <text class="line" x="70" y="120">Sit with users. Contact is the act.</text>
   <text class="who harness" x="70" y="160">The harness</text>
-  <text class="line" x="70" y="192">Telemetry, monitoring, errors, feedback,</text>
-  <text class="line" x="70" y="226">gathered into the packet.</text>
+  <text class="line" x="70" y="192">The listener gathers telemetry, errors,</text>
+  <text class="line" x="70" y="226">and feedback into the packet.</text>
 
   <path class="arrow" d="M532,132 L600,132" marker-end="url(#arr)"/>
 
@@ -38,7 +38,7 @@
   <text class="line" x="636" y="120">The shared operating picture,</text>
   <text class="line" x="636" y="154">the pitch, the shape.</text>
   <text class="who harness" x="636" y="190">The harness</text>
-  <text class="line" x="636" y="222">The test suite, the standards file.</text>
+  <text class="line" x="636" y="222">The suite, the standards, the watch's log.</text>
 
   <path class="arrow" d="M851,252 L851,310" marker-end="url(#arr)"/>
 
@@ -50,7 +50,7 @@
   <text class="line" x="636" y="456">Choose a prototype, or none.</text>
   <text class="line" x="636" y="490">Decide the shape, in conversation.</text>
   <text class="who harness" x="636" y="530">The harness</text>
-  <text class="line" x="636" y="562">Enforces what a test or a standard settles.</text>
+  <text class="line" x="636" y="562">The watch stops and asks.</text>
   <text class="line" x="636" y="596">It does not decide.</text>
 
   <path class="arrow" d="M604,464 L536,464" marker-end="url(#arr)"/>
@@ -59,15 +59,16 @@
   <rect class="box" x="40" y="316" width="490" height="296" rx="14"/>
   <text class="move" x="70" y="352">Act</text>
   <text class="who harness" x="70" y="390">The harness</text>
-  <text class="line" x="70" y="422">Red first. Make it work, within the wall.</text>
-  <text class="line" x="70" y="456">Make it right. Guard. Build, deploy, revert.</text>
-  <text class="who people" x="70" y="496">People</text>
-  <text class="line" x="70" y="528">Watch the first run. Accept and merge.</text>
-  <text class="line" x="70" y="562">No second approver.</text>
+  <text class="line" x="70" y="422">The scenario agent shows red.</text>
+  <text class="line" x="70" y="456">The maker, the cleaner, the guardian.</text>
+  <text class="line" x="70" y="490">Build, deploy, revert.</text>
+  <text class="who people" x="70" y="530">People</text>
+  <text class="line" x="70" y="562">Watch the first run. Accept and merge.</text>
+  <text class="line" x="70" y="596">No second approver.</text>
 
   <path class="arrow" d="M285,314 L285,256" marker-end="url(#arr)"/>
 
   <!-- the harness stops for a person: dashed, from Act back to Decide -->
   <path class="stop" d="M285,614 L285,668 L851,668 L851,618" marker-end="url(#arr-dash)"/>
-  <text class="stoplbl" x="568" y="700" text-anchor="middle">stops for a person: budget spent, a test or the picture changed, the shape or the pitch would change</text>
+  <text class="stoplbl" x="568" y="700" text-anchor="middle">the watch stops for a person: budget spent, a test or the picture changed, the shape or the pitch would change</text>
 </svg>

@@ -32,7 +32,7 @@ What it does:
 - Knows the state of every slice. What ran, what it made, what it spent, what moved.
 - Calls the next agent with a brief and a fresh context. The forecaster before the work. The scenario agent for red. The maker, the cleaner, and the guardian, one after another. The build. The listener, in production.
 - Keeps the log, and keeps it visible to anyone who needs it. The maker's record of a moved test. The cleaner's commit. The guardian's packet. The actual spend against the budget. The form of the log is the team's.
-- Wakes a person on a standing order. The orders are the stops in the loop ([the loop](/loop/), "Where the harness hands back"). A stop waits for the person. The packet from production does not wait; the watch hands it over and goes on.
+- Wakes a person on a standing order. The orders are the stops in the loop ([the loop](/loop/), "Where the watch wakes a person"). A stop waits for the person. The packet from production does not wait; the watch hands it over and goes on.
 - Records who took part in a decision, so the team knows who holds the context. Not for blame. (Section 6)
 
 What it never does: merge, rank the value queue, settle a shape, edit the pitch, or raise a budget. If it did any of these, it would be the approve button the method left out, or the product owner it dropped.

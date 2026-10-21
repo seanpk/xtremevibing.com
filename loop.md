@@ -40,18 +40,18 @@ The loop is Boyd's OODA loop, simplified: four moves, and in each one both peopl
 
 | Move | People | The harness |
 | --- | --- | --- |
-| Observe | Sit with users. Contact is the act. | Gathers telemetry, monitoring, errors, and feedback into the packet. |
-| Orient | Hold the shared operating picture, the pitch, and the shape. | Holds the test suite, what must stay true, and the standards, what we have learned. |
-| Decide | Rank the value queue. State the scenario. Choose a prototype, or none. Decide the shape, in conversation. Decide from evidence and Lead with conviction say which of these takes two people and which takes one. | Enforces what a test or a standard settles. It does not decide. |
-| Act | Watch the first run. Accept and merge. No second approver. | Red first. Make it work within the wall, make it right, guard. Build, deploy, revert. |
+| Observe | Sit with users. Contact is the act. | The listener gathers telemetry, monitoring, errors, and feedback into the packet. |
+| Orient | Hold the shared operating picture, the pitch, and the shape. | Holds the test suite, what must stay true; the standards, what we have learned; and the watch's log, what was done. |
+| Decide | Rank the value queue. State the scenario. Choose a prototype, or none. Decide the shape, in conversation. Decide from evidence and Lead with conviction say which of these takes two people and which takes one. | Enforces what a test or a standard settles. The watch stops and asks. It does not decide. |
+| Act | Watch the first run. Accept and merge. No second approver. | The scenario agent shows red. The maker, the cleaner, the guardian. Build, deploy, revert. |
 
 ![The four moves, with what people do and what the harness does in each](/images/loop-moves.svg)
 
-The factory is the Act move only (section 17). The constraint on the loop is steering, not build speed. The harness stops inside Act and hands back to a person when the budget is spent, a test or the picture changed, or the shape or the pitch would change. That is Own the result: the harness may stop and may not decide.
+The factory is the Act move only (section 17). The constraint on the loop is steering, not build speed. The watch stops inside Act and wakes a person when the budget is spent, a test or the picture changed, or the shape or the pitch would change. That is Own the result: the harness may stop and may not decide.
 
 ## The loop
 
-Green boxes are people. White boxes are the harness. Amber boxes are real use. A dashed box runs only when needed. A dashed arrow is a decision the harness hands back to a person, or the automatic revert.
+Green boxes are people. White boxes are the harness. Amber boxes are real use. A dashed box runs only when needed. A dashed arrow is a decision the watch hands back to a person, or the automatic revert.
 
 ```mermaid
 flowchart TB
@@ -130,11 +130,11 @@ The only gates on the way to production are machine gates: red before green, the
 9. Deploy to production. Harness. Production is the default, in slices small enough to revert. Slow checks run after the merge. If one fails, the pipeline reverts the main line and raises a new defect. The team takes the next task. Nobody stands on the deploy. (Sections 10, 11, 12)
 10. Back to the shared operating picture. Real use and people. Telemetry, errors, and user feedback bring the change back. **The listener** gathers the packet. People read it and sit with users. A ranking or shape decision with neither a recent session nor a packet from real use is void. When production raises its hand, the person who set the work going answers first, and any teammate may answer in their place. (Sections 3, 9, 12)
 
-## Where the harness hands back
+## Where the watch wakes a person
 
-The harness does not decide these. These are the watch's standing orders. It stops and puts the decision in front of a person. That is Own the result: a person is responsible for every change, including one made entirely by agents.
+The watch does not decide these. They are its standing orders. It stops and puts the decision in front of a person. That is Own the result: a person is responsible for every change, including one made entirely by agents.
 
-| The harness sees | What happens | Section |
+| The watch sees | What happens | Section |
 | --- | --- | --- |
 | The budget is spent and the suite is not green | A person chooses to continue, reshape, or set it aside, under Lead with conviction. The value queue holder joins if the ranking changes. Past a limit the team agreed, or when the shape change is wider than expected, it goes to Decide from evidence. | 13 |
 | Old tests or the picture changed and the shape did not | The packet lists them and goes to the person who set the work going. They talk it through with someone, or ship. A changed user message and its tests ship. | 1, 3, 15 |

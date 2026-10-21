@@ -57,7 +57,7 @@ Principles are the bridge between the values and the practices, as they were in 
 
 ### Of the machine
 
-The harness enforces these. The harness is the agents, the test suite, and the pipeline. The watch runs the pipeline. The agents, and how they work with people, are drawn in [the agents](/agents/).
+The machine enforces these. The machine is the harness: the agents, the test suite, and the pipeline. The watch runs the pipeline. The agents, and how they work with people, are drawn in [the agents](/agents/).
 
 | Practice | What it is |
 | --- | --- |
