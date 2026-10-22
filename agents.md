@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The agents"
 description: "The seven kinds of agent in Xtreme Vibing, the watch that runs the pipeline, and how they work with people."
-updated: "2026-10-21"
+updated: "2026-10-22"
 permalink: /agents/
 nav: Agents
 order: 4
@@ -13,7 +13,7 @@ order: 4
 
 Section numbers point into the working notes behind these pages. The notes are not published.
 
-Agents write the code. People decide. XV names seven kinds of agent. Each runs in its own context, with a brief for one job. None of them merges, ranks, or settles the shape. One of them, the watch, runs the pipeline: it calls the others in turn, keeps the record of what they did, and puts a decision in front of a person when a standing order says so. This page says what each agent does, what it may not do, and how the set works with people. The loop they run is [the loop](/loop/).
+Agents write the code. People decide. XV names seven kinds of agent. Each runs in its own context, with a brief for one job. None of them merges, ranks, or settles the shape. One of them, the watch, runs the pipeline: it calls the others in turn, keeps the record of what they did, and puts a decision in front of a person when a standing order says so. This page says what each agent does, what it may not do, and how the set works with people. The loop they run is [the loop](/loop/). The skills, scripts and CI examples that implement them are public, with the mechanics in the README: [github.com/seanpk/xv-agents](https://github.com/seanpk/xv-agents).
 
 ![The watch sits between the people and the agents. It calls each agent in turn and takes every result into the log. On a standing order it puts a decision in front of a person. It never decides.](/images/agents-watch.svg)
 
@@ -93,4 +93,4 @@ What a team adds to shape the agents for its own system is the project layer: pr
 - The home of the slice record, and how a person is reached. A file in the repo, a pull request, an issue. The fields are fixed; the home is not.
 - What a brief contains, beyond the scenario, the budget, and the parts of the shared operating picture that apply.
 - How many of each kind to run, and which model runs which.
-- The skills that implement the agents. The plan is `plans/xv-agents-2026-10-21.md`: skills any harness can read, scripts and CI examples for the mechanical parts, no agent-specific distribution.
+- The skills that implement the agents are [xv-agents](https://github.com/seanpk/xv-agents): skills any harness can read, scripts and CI examples for the mechanical parts, no agent-specific distribution. v0.1 was built from the plan of 2026-10-21 without use; the versions after it are earned by use. What a team adds is its project layer, and that stays in the team's repo.
