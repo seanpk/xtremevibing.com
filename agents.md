@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The agents"
 description: "The seven kinds of agent in Xtreme Vibing, the watch that runs the pipeline, and how they work with people."
-updated: "2026-10-22"
+updated: "2026-10-24"
 permalink: /agents/
 nav: Agents
 order: 4
@@ -21,7 +21,7 @@ Agents write the code. People decide. XV names seven kinds of agent. Each runs i
 
 An agent may stop. It may not decide. That is Own the result: a person is responsible for every change, including one made entirely by agents. So the harness is built to hand back, not to approve. There is no agent that says yes.
 
-The other side of the rule is Ship at will. When the conditions are met, nobody else has to say yes either. The person who set the work going merges and picks the moment.
+The other side of the rule is Ship at will. When the conditions are met, nobody else has to say yes either. The person who set the work going, the originator, merges and picks the moment.
 
 ## The watch
 
@@ -42,7 +42,7 @@ The watch has standing orders for three seats:
 
 | Seat | The watch wakes them for |
 | --- | --- |
-| The person who set the work going | The budget is spent and the suite is not green. An old test or the shared operating picture moved and the shape did not. The suite is green and nothing stopped: the merge is theirs. (Sections 1, 3, 13, 15) |
+| The person who set the work going (the originator) | The budget is spent and the suite is not green. An old test or the shared operating picture moved and the shape did not. The suite is green and nothing stopped: the merge is theirs. (Sections 1, 3, 13, 15) |
 | Two or more people | Three prototypes are ready to pick from, or none. A shape change, or a contradiction of the pitch. A budget past the limit the team agreed, or a shape change wider than the slice expected. (Sections 2, 3, 6, 13) |
 | The chief engineer, with users | The packet from real use. A slow check failed after the merge: the main line reverted on its own, and a defect joined the value queue. (Sections 9, 11) |
 
@@ -58,7 +58,7 @@ Each agent runs in its own context. It sees its brief, what the watch gives it, 
 
 **The cleaner.** It makes it right. In a separate context, it fixes structure and style against the standards file and commits the fix. It keeps changes to old tests as small as they can be, and it rejects a real test turned into a fake one. A structural change and a behavior change do not ride in the same pass. It holds the standards file: rules earned by repeated misses, applied without a person approving each fix. It never adds or removes a standard; a standard enters when the person who set the work going accepts it from the packet. A cleanup that would add an abstraction is not a cleanup. It is a shape proposal, and it goes to people. (Sections 1, 5, 14)
 
-**The guardian.** In a third context, with an adversarial brief, it checks for four things: a shape change, a contradiction of the pitch, any old test that changed, and what the change does to the shared operating picture. It draws the boundary picture for the packet, because it did not build the change. It produces one packet for the proposed change, however many tests moved. A shape change or a pitch contradiction stops the change for two people. Changed tests and picture changes alone go to the person who set the work going. Agreement that does not cite evidence does not count. Security and usability agents are guardian-kind agents with a different question. They give findings. None of them merge. (Sections 1, 3, 15)
+**The guardian.** In a third context, with an adversarial brief, it checks for four things: a shape change, a contradiction of the pitch, any old test that changed, and what the change does to the shared operating picture. It draws the boundary diagram for the packet, because it did not build the change. It produces one packet for the proposed change, however many tests moved. A shape change or a pitch contradiction stops the change for two people. Changed tests and picture changes alone go to the person who set the work going. Agreement that does not cite evidence does not count. Security and usability agents are guardian-kind agents with a different question. They give findings. None of them merge. (Sections 1, 3, 15)
 
 **Build and deploy.** Not an agent. The pre-merge suite returns in minutes, or the build has failed. After the merge, production is the default. Slow checks run after; a failure reverts the main line and raises a defect. Nobody stands on the deploy. (Sections 10, 11)
 
@@ -80,7 +80,7 @@ Two or more people decide from evidence on the packet: which prototype, or none;
 
 The chief engineer sits with users and reads the packet, and ranks the value queue from both. A ranking with neither is void. (Sections 8, 9)
 
-Nobody reads the code to accept a change. They read the packet: the scenario in words, the recording, the boundary picture, what the suite asserts after the change, and the raw data when they want it. (Section 3)
+Nobody reads the code to accept a change. They read the packet: the scenario in words, the recording, the boundary diagram, what the suite asserts after the change, and the raw data when they want it. (Section 3)
 
 ## Changing an agent
 

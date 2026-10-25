@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-10-21"
+updated: "2026-10-24"
 permalink: /loop/
 nav: Loop
 order: 3
@@ -126,7 +126,7 @@ The only gates on the way to production are machine gates: red before green, the
 5. Make it work. Harness. **The maker** builds behind the wall. Green means the new scenario plus every existing test. The maker may move an old test when the scenario forces it, and records why. If the budget runs out without green, the work stops and a person decides. (Sections 1, 13)
 6. Make it right, then guard. Harness. **The cleaner**, in a separate context, fixes structure and style against the standards file and commits the fix. It keeps changes to old tests small and rejects a real test turned fake. Structure and behavior do not ride in one pass. **The guardian**, in a third context, checks for a shape change, a pitch contradiction, a changed test, and what the change does to the shared operating picture. A shape change or pitch contradiction stops the change for two people. Changed tests and picture changes alone go in the packet to the person who set the work going, who may opt into a conversation. **Security and usability agents** give findings. None of them merge. (Sections 1, 3, 14)
 7. Fast build. Harness. The merge waits on a suite that returns in minutes. A skipped or timed-out suite is a failed build. (Section 11)
-8. Accept and merge. People. The person who set the work going watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in. No second person approves. That is Ship at will. (Sections 6, 9)
+8. Accept and merge. People. The person who set the work going, the originator, watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in. No second person approves. That is Ship at will. (Sections 6, 9)
 9. Deploy to production. Harness. Production is the default, in slices small enough to revert. Slow checks run after the merge. If one fails, the pipeline reverts the main line and raises a new defect. The team takes the next task. Nobody stands on the deploy. (Sections 10, 11, 12)
 10. Back to the shared operating picture. Real use and people. Telemetry, errors, and user feedback bring the change back. **The listener** gathers the packet. People read it and sit with users. A ranking or shape decision with neither a recent session nor a packet from real use is void. When production raises its hand, the person who set the work going answers first, and any teammate may answer in their place. (Sections 3, 9, 12)
 
@@ -160,4 +160,4 @@ From the open questions. Not part of the loop until agreed.
 
 - How big a slice budget should be, and whether people need slack of their own.
 - Whether a scenario in words is a strong enough red for a new feature.
-- How to check a generated boundary picture against the run it shows.
+- How to check a generated boundary diagram against the run it shows.
