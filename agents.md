@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The agents"
 description: "The seven kinds of agent in Xtreme Vibing, the watch that runs the pipeline, and how they work with people."
-updated: "2026-10-24"
+updated: "2026-10-27"
 permalink: /agents/
 nav: Agents
 order: 4
@@ -32,7 +32,7 @@ What it does:
 - Knows the state of every slice. What ran, what it made, what it spent, what moved.
 - Calls the next agent with a brief and a fresh context. The forecaster before the work. The scenario agent for red. The maker, the cleaner, and the guardian, one after another. The build. The listener, in production.
 - Keeps the log, and keeps it visible to anyone who needs it. The log is one slice record per slice, with named fields: the scenario, who set the work going, the forecast, the wall baseline, moved tests and why, the cleaner's commit, the guardian's packet, the actual spend, each stop raised and who answered, the decision record. The home of the record is the team's: a file in the repo, a pull request, an issue.
-- Wakes a person on a standing order. The orders are the stops in the loop ([the loop](/loop/), "Where the watch wakes a person"), and they are scripts, not prose, so a check can fail and CI can run it. On a stop the watch writes the record, puts the question in front of the seat, and ends its turn with its context kept. The packet from production does not wait; the watch hands it over and goes on.
+- Wakes a person on a standing order. The orders are the stops in the loop ([the loop](/loop/), "Where the watch wakes a person"), and they are scripts, not prose, so a check can fail and CI can run it. A check that cannot run is not a pass; it is a stop. On a stop the watch writes the record, puts the question in front of the seat, and ends its turn with its context kept. The packet from production does not wait; the watch hands it over and goes on.
 - Is started by a person, from their own session: "run this slice". A headless form runs the same steps where there is nobody to wait for, as in CI, and exits with the packet. The slice record carries the resume either way.
 - Records who took part in a decision, so the team knows who holds the context. Not for blame. (Section 6)
 
@@ -42,7 +42,7 @@ The watch has standing orders for three seats:
 
 | Seat | The watch wakes them for |
 | --- | --- |
-| The person who set the work going (the originator) | The budget is spent and the suite is not green. An old test or the shared operating picture moved and the shape did not. The suite is green and nothing stopped: the merge is theirs. (Sections 1, 3, 13, 15) |
+| The person who set the work going (the originator) | The budget is spent, green or not. A check cannot run. An old test or the shared operating picture moved and the shape did not. The suite is green and nothing stopped: the merge is theirs. (Sections 1, 3, 13, 15) |
 | Two or more people | Three prototypes are ready to pick from, or none. A shape change, or a contradiction of the pitch. A budget past the limit the team agreed, or a shape change wider than the slice expected. (Sections 2, 3, 6, 13) |
 | The chief engineer, with users | The packet from real use. A slow check failed after the merge: the main line reverted on its own, and a defect joined the value queue. (Sections 9, 11) |
 
@@ -76,7 +76,7 @@ People sit in three seats, and the watch knows which seat an order goes to.
 
 The person who set the work going works with the forecaster before the slice, watches the first run of a new feature, accepts moved tests and changes to the picture, merges when the suite is green and nothing stopped, and answers production first. Any teammate may stand in. (Sections 1, 3, 9, 12)
 
-Two or more people decide from evidence on the packet: which prototype, or none; the shape; a contradiction of the pitch. The decision is written down short, with who took part, and binds later agents. (Sections 2, 3, 6, 7)
+Two or more people decide from evidence on the packet: which prototype, or none; the shape; a contradiction of the pitch. The decision is written down short, with who took part, and binds later agents. A team of one declares it: the same stops wait, one person answers, and the record says one person decided. (Sections 2, 3, 6, 7, 20)
 
 The chief engineer sits with users and reads the packet, and ranks the value queue from both. A ranking with neither is void. (Sections 8, 9)
 

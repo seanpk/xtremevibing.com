@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-10-24"
+updated: "2026-10-27"
 permalink: /loop/
 nav: Loop
 order: 3
@@ -123,7 +123,7 @@ The only gates on the way to production are machine gates: red before green, the
 2. Take the next task. People and harness. Any teammate takes it. They know who it is for, and they may refuse it. The scenario is stated in words, with what this slice may ignore. A defect comes as a recording. **The forecaster** forecasts a budget with that person. (Sections 1, 8, 13)
 3. Prototype, if the design is open. Harness and people. Only when the scenario does not settle the design, and a wrong design would be felt in use. Agents build three running versions that differ on one named axis. At least two people name which difference mattered, with a user when one can be reached. One is chosen, or none. The choice is restated as the scenario. The other runs are discarded. A prototype may run in production for a few real users when that is the only way to learn, and it is still discarded at the pick. (Sections 2, 9)
 4. Red first. Harness. **The scenario agent**, never the maker, makes the scenario executable, as a Playwright trace or an API sequence, and shows it fails before the fix. (Section 1)
-5. Make it work. Harness. **The maker** builds behind the wall. Green means the new scenario plus every existing test. The maker may move an old test when the scenario forces it, and records why. If the budget runs out without green, the work stops and a person decides. (Sections 1, 13)
+5. Make it work. Harness. **The maker** builds behind the wall. Green means the new scenario plus every existing test. The maker may move an old test when the scenario forces it, and records why. If the budget runs out, green or not, the work stops and a person decides. (Sections 1, 13)
 6. Make it right, then guard. Harness. **The cleaner**, in a separate context, fixes structure and style against the standards file and commits the fix. It keeps changes to old tests small and rejects a real test turned fake. Structure and behavior do not ride in one pass. **The guardian**, in a third context, checks for a shape change, a pitch contradiction, a changed test, and what the change does to the shared operating picture. A shape change or pitch contradiction stops the change for two people. Changed tests and picture changes alone go in the packet to the person who set the work going, who may opt into a conversation. **Security and usability agents** give findings. None of them merge. (Sections 1, 3, 14)
 7. Fast build. Harness. The merge waits on a suite that returns in minutes. A skipped or timed-out suite is a failed build. (Section 11)
 8. Accept and merge. People. The person who set the work going, the originator, watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in. No second person approves. That is Ship at will. (Sections 6, 9)
@@ -136,12 +136,15 @@ The watch does not decide these. They are its standing orders. It stops and puts
 
 | The watch sees | What happens | Section |
 | --- | --- | --- |
-| The budget is spent and the suite is not green | A person chooses to continue, reshape, or set it aside, under Lead with conviction. The value queue holder joins if the ranking changes. Past a limit the team agreed, or when the shape change is wider than expected, it goes to Decide from evidence. | 13 |
+| The budget is spent, green or not | A person chooses to continue, reshape, or set it aside, under Lead with conviction. The value queue holder joins if the ranking changes. Past a limit the team agreed, or when the shape change is wider than expected, it goes to Decide from evidence. | 13 |
 | Old tests or the picture changed and the shape did not | The packet lists them and goes to the person who set the work going. They talk it through with someone, or ship. A changed user message and its tests ship. | 1, 3, 15 |
 | A cleanup would add an abstraction, or a change contradicts the pitch | The guardian produces the packet. It is a shape proposal, and people decide it in conversation. | 1, 3, 5, 6 |
 | A coupled version meets a budget the clean one misses | People decide the exception from the two runs. The rule stays in the harness. | 4 |
 | Repeated failures, or a diff that keeps growing | The shape conversation opens. The agent may not renovate. | 5 |
+| A check cannot run, or its input is broken | A person looks. It is never counted as a pass. | 11 |
 | A slow check fails after merge | No person. The main line reverts and a new defect enters the value queue. | 11 |
+
+A team of one runs the same stops. A stop for two people still waits; one person answers it, and the record says one person decided. (Section 20)
 
 ## Left out on purpose
 
