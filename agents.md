@@ -82,6 +82,8 @@ The chief engineer sits with users and reads the packet, and ranks the value que
 
 Nobody reads the code to accept a change. They read the packet: the scenario in words, the recording, the boundary diagram, what the suite asserts after the change, and the raw data when they want it. (Section 3)
 
+An example from use. In xv-agents v0.3, [one slice record](https://github.com/seanpk/xv-agents/blob/v0.3.0/.xv/slices/2026-10-27-red-joins.md) and [its packet](https://github.com/seanpk/xv-agents/blob/v0.3.0/.xv/slices/2026-10-27-red-joins.packet.md) show a whole slice: the forecast, the budget a person set, red, green, a cleaner with nothing to fix, a guardian that found gaps, the person sending the work back twice, and the gap between forecast and spend at the close. One person decided it (section 20). The artifacts use the names of that version.
+
 ## Changing an agent
 
 A change to an agent's brief, its may-not list, a standing order, or any check it is judged by is Decide from evidence by default: two people, written down short. A team may name cases where Lead with conviction is the better answer, and naming a case is itself a two-person decision. One learned rule inside the current brief is one person's call. An agent never accepts its own change.
