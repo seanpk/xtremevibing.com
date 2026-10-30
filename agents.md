@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The agents"
 description: "The seven kinds of agent in Xtreme Vibing, the watch that runs the pipeline, and how they work with people."
-updated: "2026-10-27"
+updated: "2026-10-29"
 permalink: /agents/
 nav: Agents
 order: 4
@@ -42,7 +42,7 @@ The watch has standing orders for three seats:
 
 | Seat | The watch wakes them for |
 | --- | --- |
-| The person who set the work going (the originator) | The budget is spent, green or not. A check cannot run. An old test or the shared operating picture moved and the shape did not. The suite is green and nothing stopped: the merge is theirs. (Sections 1, 3, 13, 15) |
+| The person who set the work going (the originator) | The budget is spent, green or not. A check cannot run. A stall: repeated failures or a diff that keeps growing, on this slice. An old test or the shared operating picture moved and the shape did not, or the guardian recommends a test join or leave the wall. The suite is green and nothing stopped: the merge is theirs. (Sections 1, 3, 5, 13, 15) |
 | Two or more people | Three prototypes are ready to pick from, or none. A shape change, or a contradiction of the pitch. A budget past the limit the team agreed, or a shape change wider than the slice expected. (Sections 2, 3, 6, 13) |
 | The chief engineer, with users | The packet from real use. A slow check failed after the merge: the main line reverted on its own, and a defect joined the value queue. (Sections 9, 11) |
 
@@ -52,13 +52,13 @@ Each agent runs in its own context. It sees its brief, what the watch gives it, 
 
 **The forecaster.** Before the work, it forecasts the budget for the slice with the engineer who will be responsible for it: tokens, time, and an expectation of shape change and its breadth. A human does not estimate tokens. The forecast goes into the slice record. The watch writes the actual spend into the same record as the work runs. When the slice closes, the forecaster appends one entry to the estimation guide: the slice, the forecast, the actual, the gap, one line on why. No acceptance before the write; it rides in the next packet, and anyone reverts. The guide is a list of closed slices and is never edited in place. It may not raise a budget during the work. That is the engineer's call under Lead with conviction. (Section 13)
 
-**The scenario agent.** It makes the scenario executable, as a Playwright trace or an API sequence, and shows it fail before the fix. For a defect it starts from a recording. For a new feature it starts from words, and the first passing run is watched by a person, who adds the case they only noticed by seeing the wrong thing. It is never the maker. A context that writes the red and then makes it green is agreeing with itself. (Section 1)
+**The scenario agent.** It makes the scenario executable, as a Playwright trace or an API sequence, and shows it fail before the fix. It may mark tests that only prove this slice was done; those markings are part of the red the person who set the work going accepts. For a defect it starts from a recording. For a new feature it starts from words, and the first passing run is watched by a person, who adds the case they only noticed by seeing the wrong thing. It is never the maker. A context that writes the red and then makes it green is agreeing with itself. (Section 1)
 
 **The maker.** It makes it work, behind the test wall. Green means the new scenario plus every existing test. It may move an old test when the scenario forces it, and it records which assertion moved and why. An unrecorded change or deletion is the cheat. If the budget runs out without green, it stops. It does not renovate. With a prototype brief it builds one of three running versions that differ on one named axis, with no wall and a loose model; that context is never the one that builds the pick. (Sections 1, 2, 5, 13)
 
-**The cleaner.** It makes it right. In a separate context, it fixes structure and style against the standards file and commits the fix. It keeps changes to old tests as small as they can be, and it rejects a real test turned into a fake one. A structural change and a behavior change do not ride in the same pass. It holds the standards file: rules earned by repeated misses, applied without a person approving each fix. It never adds or removes a standard; a standard enters when the person who set the work going accepts it from the packet. A cleanup that would add an abstraction is not a cleanup. It is a shape proposal, and it goes to people. (Sections 1, 5, 14)
+**The cleaner.** It makes it right. In a separate context, it fixes structure and style against the standards file and commits the fix. It keeps changes to old tests as small as they can be, and it rejects a real test turned into a fake one. After green it removes the tests the scenario agent marked slice-only, with a record of the assertion and why. A structural change and a behavior change do not ride in the same pass. It holds the standards file: rules earned by repeated misses, applied without a person approving each fix. It never adds or removes a standard; a standard enters when the person who set the work going accepts it from the packet. A cleanup that would add an abstraction is not a cleanup. It is a shape proposal, and it goes to people. (Sections 1, 5, 14)
 
-**The guardian.** In a third context, with an adversarial brief, it checks for four things: a shape change, a contradiction of the pitch, any old test that changed, and what the change does to the shared operating picture. It draws the boundary diagram for the packet, because it did not build the change. It produces one packet for the proposed change, however many tests moved. A shape change or a pitch contradiction stops the change for two people. Changed tests and picture changes alone go to the person who set the work going. Agreement that does not cite evidence does not count. Security and usability agents are guardian-kind agents with a different question. They give findings. None of them merge. (Sections 1, 3, 15)
+**The guardian.** In a third context, with an adversarial brief, it checks for five things: a shape change, a contradiction of the pitch, any old test that changed, any new test that should join the wall or leave it, and what the change does to the shared operating picture. It draws the boundary diagram for the packet, because it did not build the change. It produces one packet for the proposed change, however many tests moved. A shape change or a pitch contradiction stops the change for two people. Changed tests, picture changes, and recommendations on which tests stay go to the person who set the work going. Agreement that does not cite evidence does not count. Security and usability agents are guardian-kind agents with a different question. They give findings. None of them merge. (Sections 1, 3, 15)
 
 **Build and deploy.** Not an agent. The pre-merge suite returns in minutes, or the build has failed. After the merge, production is the default. Slow checks run after; a failure reverts the main line and raises a defect. Nobody stands on the deploy. (Sections 10, 11)
 
@@ -74,7 +74,7 @@ The team may run more agents, or more than one of each kind. The contexts stay s
 
 People sit in three seats, and the watch knows which seat an order goes to.
 
-The person who set the work going works with the forecaster before the slice, watches the first run of a new feature, accepts moved tests and changes to the picture, merges when the suite is green and nothing stopped, and answers production first. Any teammate may stand in. (Sections 1, 3, 9, 12)
+The person who set the work going works with the forecaster before the slice, watches the first run of a new feature, accepts the red, moved tests, recommendations on which tests stay, and changes to the picture, merges when the suite is green and nothing stopped, and answers production first. Any teammate may stand in. (Sections 1, 3, 9, 12)
 
 Two or more people decide from evidence on the packet: which prototype, or none; the shape; a contradiction of the pitch. The decision is written down short, with who took part, and binds later agents. A team of one declares it: the same stops wait, one person answers, and the record says one person decided. (Sections 2, 3, 6, 7, 20)
 
