@@ -25,7 +25,7 @@ The other side of the rule is Ship at will. When the conditions are met, nobody 
 
 ## The watch
 
-The watch is the agent that runs the pipeline. The name is from the bridge of a ship. The watch keeps the deck while the captain sleeps. It keeps the log. It keeps the picture current. The captain leaves standing orders: wake me if this happens. The watch may wake the captain, and may not change course.
+The watch is the agent that runs the pipeline. The name is from the bridge of a ship. The watch keeps the deck while the captain sleeps. It keeps the log. The picture is the team's: the watch changes it only when a person directs it. The captain leaves standing orders: wake me if this happens. The watch may wake the captain, and may not change course.
 
 What it does:
 
