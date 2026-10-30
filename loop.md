@@ -144,6 +144,8 @@ The watch does not decide these. They are its standing orders. It stops and puts
 | A check cannot run, or its input is broken | A person looks. It is never counted as a pass. | 11 |
 | A slow check fails after merge | No person. The main line reverts and a new defect enters the value queue. | 11 |
 
+A miss against the slice's own scenario is not a stop. When the guardian proves the slice does not yet do what its scenario says, the watch sends it back to the step that missed and records why. The originator decided this when they accepted the scenario. The budget and a stall still stop it. A finding outside the scenario, or a fix that would change the scenario, is a stop. (Section 19)
+
 A team of one runs the same stops. A stop for two people still waits; one person answers it, and the record says one person decided. (Section 20)
 
 ## Left out on purpose

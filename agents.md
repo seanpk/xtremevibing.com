@@ -38,6 +38,8 @@ What it does:
 
 What it never does: merge, rank the value queue, settle a shape, edit the pitch, raise a budget, or edit its own standing orders. If it did any of these, it would be the approve button the method left out, or the product owner it dropped.
 
+It does send a slice back, without a stop, when the guardian proves the slice misses its own scenario. The originator settled that when they accepted the scenario. The watch records why. The budget and a stall still stop it, and a finding outside the scenario goes to a person.
+
 The watch has standing orders for three seats:
 
 | Seat | The watch wakes them for |
