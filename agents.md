@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The agents"
 description: "The seven kinds of agent in Xtreme Vibing, the watch that runs the pipeline, and how they work with people."
-updated: "2026-10-29"
+updated: "2026-10-31"
 permalink: /agents/
 nav: Agents
 order: 4
@@ -17,9 +17,21 @@ Agents write the code. People decide. XV names seven kinds of agent. Each runs i
 
 ![The watch sits between the people and the agents. It calls each agent in turn and takes every result into the log. On a standing order it puts a decision in front of a person. It never decides.](/images/agents-watch.svg)
 
-## The one rule
+## Own the result
 
-An agent may stop. It may not decide. That is Own the result: a person is responsible for every change, including one made entirely by agents. So the harness is built to hand back, not to approve. There is no agent that says yes.
+<span id="the-one-rule"></span>
+
+Even when the code is 100% written by agents, a person is 100% responsible for what it does. The agents are built around that.
+
+An agent may write the tests, write all of the code, and deploy to production. It must stop, and hand the change to a person, when the change would:
+
+- move the system away from its stated purpose, or widen it (the pitch);
+- change the system's structure or its contracts (the shape, and the old tests on the wall);
+- change what users experience without evidence from real use (Go and see).
+
+The third is the newest, and the watch does not stop on it yet.
+
+The rule that holds this in place is short: an agent may stop; it may not decide. The harness is built to hand back, not to approve. There is no agent that says yes. The other stops in the loop, a spent budget, a stall, a check that cannot run, keep that rule when the work itself goes wrong.
 
 The other side of the rule is Ship at will. When the conditions are met, nobody else has to say yes either. The person who set the work going, the originator, merges and picks the moment.
 

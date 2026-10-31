@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-10-29"
+updated: "2026-10-31"
 permalink: /loop/
 nav: Loop
 order: 3
@@ -47,7 +47,7 @@ The loop is Boyd's OODA loop, simplified: four moves, and in each one both peopl
 
 ![The four moves, with what people do and what the harness does in each](/images/loop-moves.svg)
 
-The factory is the Act move only (section 17). The constraint on the loop is steering, not build speed. The watch stops inside Act and wakes a person when the budget is spent, a test or the picture changed, or the shape or the pitch would change. That is Own the result: the harness may stop and may not decide.
+The factory is the Act move only (section 17). The constraint on the loop is steering, not build speed. The watch stops inside Act and wakes a person when the budget is spent, a test or the picture changed, or the shape or the pitch would change. That is Own the result: even when agents write all of the code, a person is responsible for what it does, so the harness may stop and may not decide.
 
 ## The loop
 

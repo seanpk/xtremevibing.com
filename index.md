@@ -3,7 +3,7 @@
 layout: page.njk
 title: "Xtreme Vibing"
 description: "Notes on carrying Extreme Programming into software that agents write and people are responsible for."
-updated: "2026-10-12"
+updated: "2026-10-31"
 permalink: /
 nav: Summary
 order: 1
@@ -15,7 +15,7 @@ Speakable draft, 2026-10-05.
 
 There are two ways to drive. The commute is the road you have taken for five years. You can listen to a podcast, answer a message about who is picking up your son for his piano lesson, and think about the meeting you are walking into. The road is familiar. The attention is borrowed. The oval is the other drive. A pack of cars, two hundred miles an hour, a concrete wall if the attention slips. You are going fast, so the discipline has to be complete. If you are too tired, you pull over. If a teammate is not fit to drive, you take the keys. The oval is not a stunt, and it is not an invitation to a pace no person can sustain. The oval is the new drive. Faster than the commute. Still a human pace.
 
-Xtreme Vibing (XV) is how we make that drive fast and keep it safe. Agents write the code. People rank the work, keep the one-page pitch for what the system is, sit with users, and decide the shape of the system. Some of the discipline is enforced by agents and the pipeline. The rest is owned by people. Two principles say how a person decides: two people over the same evidence, written down and binding, or one accountable person, from judgment informed by data. Three more hold them in place. Go and see: the evidence comes from real use. Ship at will: the harness sets the conditions and the person picks the moment. Own the result: a person is responsible for every change, even one made entirely by agents. The team trusts each other and the system they use to build the system. The people who fund the software trust the team with the product. Trust is earned, and speed needs it.
+Xtreme Vibing (XV) is how we make that drive fast and keep it safe. Agents write the code. People rank the work, keep the one-page pitch for what the system is, sit with users, and decide the shape of the system. Some of the discipline is enforced by agents and the pipeline. The rest is owned by people. Two principles say how a person decides: two people over the same evidence, written down and binding, or one accountable person, from judgment informed by data. Three more hold them in place. Go and see: the evidence comes from real use. Ship at will: the harness sets the conditions and the person picks the moment. Own the result: even when agents write all of the code, a person is responsible for what it does. The team trusts each other and the system they use to build the system. The people who fund the software trust the team with the product. Trust is earned, and speed needs it.
 
 XV updates the disciplines described in Extreme Programming (XP) to reflect nearly three decades of new experience and the change agents bring. Vibe coding feels safe at commuter speed. It is only safe because the speed is held down or the stakes are low. Xtreme Vibing is what we need on the oval. The twelve XP practices were controls for uncertainty, change cost, and coordination. Uncertainty and coordination remain. Change cost is lower than it has ever been. In its place is change risk: the data, security, usability, functionality, and regression risks that come from speed without discipline. The XV practices are controls for uncertainty, change risk, and coordination.
 
