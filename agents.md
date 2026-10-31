@@ -29,8 +29,6 @@ An agent may write the tests, write all of the code, and deploy to production. I
 - change the system's structure or its contracts (the shape, and the old tests on the wall);
 - change what users experience without evidence from real use (Go and see).
 
-The third is the newest, and the watch does not stop on it yet.
-
 The rule that holds this in place is short: an agent may stop; it may not decide. The harness is built to hand back, not to approve. There is no agent that says yes. The other stops in the loop, a spent budget, a stall, a check that cannot run, keep that rule when the work itself goes wrong.
 
 The other side of the rule is Ship at will. When the conditions are met, nobody else has to say yes either. The person who set the work going, the originator, merges and picks the moment.
