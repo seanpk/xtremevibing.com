@@ -3,15 +3,13 @@
 layout: page.njk
 title: "Xtreme Vibing"
 description: "Notes on carrying Extreme Programming into software that agents write and people are responsible for."
-updated: "2026-10-31"
+updated: "2026-11-04"
 permalink: /
 nav: Summary
 order: 1
 ---
 
 # Xtreme Vibing
-
-Speakable draft, 2026-10-05.
 
 There are two ways to drive. The commute is the road you have taken for five years. You can listen to a podcast, answer a message about who is picking up your son for his piano lesson, and think about the meeting you are walking into. The road is familiar. The attention is borrowed. The oval is the other drive. A pack of cars, two hundred miles an hour, a concrete wall if the attention slips. You are going fast, so the discipline has to be complete. If you are too tired, you pull over. If a teammate is not fit to drive, you take the keys. The oval is not a stunt, and it is not an invitation to a pace no person can sustain. The oval is the new drive. Faster than the commute. Still a human pace.
 
@@ -27,14 +25,14 @@ We build for users. Value is the experience of the user. It is the whole team's 
 
 A stakeholder is not a user. The product owner Scrum created is one user, at best. More often it is a proxy, and the proxy lets the team say customer value is not their job. Sitting with the stakeholder is not sitting with the users. Often sitting with the product owner is not either.
 
-The return on investment for the shareholders was set by the people who funded the software, before this team existed. It does not affect the ranking of work. We follow Denning's Law of the Customer and focus on creating value for the customers of the software - its users. With Xtreme Vibing we build software with discipline; not only in how we do it, but in why we do it.
+The return on investment for the shareholders was set by the people who funded the software, before this team existed. It does not affect the ranking of work. We follow Denning's Law of the Customer and focus on creating value for the customers of the software, its users. With Xtreme Vibing we build software with discipline, not only in how we do it, but in why we do it.
 
 We keep a current understanding of those users, of what the system is right now, and of ideas for how it can better represent the vision. Yesterday's change is part of today's shared operating picture. It is written down, enough for a new person or an agent to find their footing, without repeating the code. While agents build, that understanding is the team's lasting value.
 
-We decide from evidence of real use, not from what we expect. A decision about what the user experiences is void without a recent session with users or evidence gathered from real use. Prototypes are run and compared, not argued. The process itself is a hypothesis: we start with the best we know and refine it as we work.
+We decide from evidence of real use, not from what we expect. A decision about what the user experiences is void without a recent session with users or evidence gathered from real use. When we do not yet know what to build, we build to find out, and we let users try what we built. Prototypes are run and compared, not argued. The process itself is a hypothesis: we start with the best we know and refine it as we work.
 
 Work tends to come in bursts. Before a burst we rethink the shape of the system, and as it ends we ask what the burst left behind. Between bursts we are with users, because nobody knows what they want until they have used it. Once a change is in production nobody stands watching it. When it raises its hand, the person who set the work going answers first.
 
 ## How we serve
 
-XP offered values and twelve practices. XV uses them as one source of inspiration. Read more in [the map](/map/).
+The values, principles, and practices are in [the map](/map/). One turn of the work, and where it hands back to people, is [the loop](/loop/). The agents, and the one that runs the pipeline, are [the agents](/agents/). XP's twelve practices were one source of inspiration; the map ends with where each one went.
