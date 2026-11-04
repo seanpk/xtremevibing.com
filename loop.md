@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-10-31"
+updated: "2026-11-04"
 permalink: /loop/
 nav: Loop
 order: 3
@@ -59,6 +59,7 @@ flowchart TB
     picture["The shared operating picture<br/>users, system, ideas"]
     rank["Rank the value queue<br/>one person"]
     take["Take the task<br/>any teammate, budget with the forecaster"]
+    explore["An exploration<br/>a person with an agent, users when possible"]
     choose["Choose one, or none<br/>two people"]
     decide["Person decides<br/>budget, tests, or the picture"]
     shape["Decide the shape<br/>in conversation"]
@@ -85,6 +86,8 @@ flowchart TB
   picture --> rank --> take
   take -- "design settled" --> red
   take -. "design open" .-> protos
+  take -. "scenario not yet clear" .-> explore
+  explore -- "scenario from what runs, the red blind to the build" --> red
   protos -- "three runs" --> choose
   choose -- "restated as the scenario" --> red
   red -- "red" --> maker
@@ -107,10 +110,10 @@ flowchart TB
   classDef harness fill:#ffffff,stroke:#56626b,color:#1a2126
   classDef use fill:#fbefdc,stroke:#9a5a00,color:#1a2126
   classDef cond stroke-dasharray:5 4
-  class picture,rank,take,choose,decide,shape,merge people
+  class picture,rank,take,explore,choose,decide,shape,merge people
   class protos,red,maker,cleaner,guardian,build,deploy,slow harness
   class users,feedback,packet use
-  class choose,decide,shape,protos cond
+  class choose,decide,shape,protos,explore cond
 ```
 
 The only gates on the way to production are machine gates: red before green, the test wall, the three agents, and a build that returns in minutes. People sit on the side paths, where a decision changes the pitch or the shape, or where tests or the picture moved and one person accepts it.
@@ -121,14 +124,15 @@ The only gates on the way to production are machine gates: red before green, the
 
 1. Rank the value queue. People. One person ranks by customer value, so the product stays one product. A conflict between users and the people paying stops the ranking and leaves the team. (Section 8)
 2. Take the next task. People and harness. Any teammate takes it. They know who it is for, and they may refuse it. The scenario is stated in words, with what this slice may ignore. A defect comes as a recording. **The forecaster** forecasts a budget with that person. (Sections 1, 8, 13)
-3. Prototype, if the design is open. Harness and people. Only when the scenario does not settle the design, and a wrong design would be felt in use. Agents build three running versions that differ on one named axis. At least two people name which difference mattered, with a user when one can be reached. One is chosen, or none. The choice is restated as the scenario. The other runs are discarded. A prototype may run in production for a few real users when that is the only way to learn, and it is still discarded at the pick. (Sections 2, 9)
-4. Red first. Harness. **The scenario agent**, never the maker, makes the scenario executable, as a Playwright trace or an API sequence, and shows it fails before the fix. It may mark tests that only prove this slice was done. Those markings are part of the red the originator accepts. (Section 1)
-5. Make it work. Harness. **The maker** builds behind the wall. Green means the new scenario plus every existing test. The maker may move an old test when the scenario forces it, and records why. If the budget runs out, green or not, the work stops and a person decides. (Sections 1, 13)
-6. Make it right, then guard. Harness. **The cleaner**, in a separate context, fixes structure and style against the standards file and commits the fix. It keeps changes to old tests small and rejects a real test turned fake. After green it removes the tests marked slice-only, with a record. Structure and behavior do not ride in one pass. **The guardian**, in a third context, checks for a shape change, a pitch contradiction, a changed test, any new test that should join the wall or leave it, and what the change does to the shared operating picture. A shape change or pitch contradiction stops the change for two people. Changed tests, picture changes, and recommendations on which new tests stay go in the packet to the person who set the work going, who may opt into a conversation. **Security and usability agents** give findings. None of them merge. (Sections 1, 3, 14)
-7. Fast build. Harness. The merge waits on a suite that returns in minutes. A skipped or timed-out suite is a failed build. (Section 11)
-8. Accept and merge. People. The person who set the work going, the originator, watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in. No second person approves. That is Ship at will. (Sections 6, 9)
-9. Deploy to production. Harness. Production is the default, in slices small enough to revert. Slow checks run after the merge. If one fails, the pipeline reverts the main line and raises a new defect. The team takes the next task. Nobody stands on the deploy. (Sections 10, 11, 12)
-10. Back to the shared operating picture. Real use and people. Telemetry, errors, and user feedback bring the change back. **The listener** gathers the packet. People read it and sit with users. A ranking or shape decision with neither a recent session nor a packet from real use is void. When production raises its hand, the person who set the work going answers first, and any teammate may answer in their place. (Sections 3, 9, 12)
+3. Build to find out, if we do not yet know what to build. Parallel prototypes, if the direction is uncertain and worth testing a few ways. Harness and people. Only when the scenario does not settle the design, and a wrong design would be felt in use. Agents build three running versions that differ on one named axis. At least two people name which difference mattered, with a user when one can be reached. One is chosen, or none. The choice is restated as the scenario. The pick may be kept as the build for the slice, or thrown away. The other runs are discarded. A prototype may run in production for a few real users when that is the only way to learn; at the pick, only the pick may stay, and only through a slice. (Sections 2, 9)
+4. Or an exploration, if the scenario is not yet clear. People and an agent. A person gets creative with an agent and builds real code to experience, with real users trying it in the best case. When the behavior is right, the person writes the scenario from what runs. The slice and its budget start there. (Sections 1, 2)
+5. Red first. Harness. **The scenario agent**, never the maker, makes the scenario executable, as a Playwright trace or an API sequence, and shows it fails before the fix. It may mark tests that only prove this slice was done. Those markings are part of the red the originator accepts. When a pick or an exploration is kept, it never sees that build: the red fails on the base, then runs against the build, and a failure there goes back to the maker as a miss against the scenario. (Sections 1, 19)
+6. Make it work. Harness. **The maker** builds behind the wall, or takes the kept build and makes the red pass. Green means the new scenario plus every existing test. The maker may move an old test when the scenario forces it, and records why. If the budget runs out, green or not, the work stops and a person decides. (Sections 1, 13)
+7. Make it right, then guard. Harness. **The cleaner**, in a separate context, fixes structure and style against the standards file and commits the fix. It keeps changes to old tests small and rejects a real test turned fake. After green it removes the tests marked slice-only, with a record. Structure and behavior do not ride in one pass. **The guardian**, in a third context, checks for a shape change, a pitch contradiction, a changed test, any new test that should join the wall or leave it, and what the change does to the shared operating picture. A shape change or pitch contradiction stops the change for two people. Changed tests, picture changes, and recommendations on which new tests stay go in the packet to the person who set the work going, who may opt into a conversation. **Security and usability agents** give findings. None of them merge. (Sections 1, 3, 14)
+8. Fast build. Harness. The merge waits on a suite that returns in minutes. A skipped or timed-out suite is a failed build. (Section 11)
+9. Accept and merge. People. The person who set the work going, the originator, watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in. No second person approves. That is Ship at will. (Sections 6, 9)
+10. Deploy to production. Harness. Production is the default, in slices small enough to revert. Slow checks run after the merge. If one fails, the pipeline reverts the main line and raises a new defect. The team takes the next task. Nobody stands on the deploy. (Sections 10, 11, 12)
+11. Back to the shared operating picture. Real use and people. Telemetry, errors, and user feedback bring the change back. **The listener** gathers the packet. People read it and sit with users. A ranking or shape decision with neither a recent session nor a packet from real use is void. When production raises its hand, the person who set the work going answers first, and any teammate may answer in their place. (Sections 3, 9, 12)
 
 ## Where the watch wakes a person
 
@@ -157,7 +161,7 @@ A team of one runs the same stops. A stop for two people still waits; one person
 - Weekly planning with a buffer. (Section 13)
 - A long-lived branch for a big overhaul. It runs as two behaviors in the trunk. (Section 10)
 - Coding standards on the maker or in `AGENTS.md`. (Section 14)
-- An implementation plan reviewed by a person. The scenario is reviewed, and a spike is a prototype. (Sections 1, 2)
+- An implementation plan reviewed by a person. The scenario is reviewed, and a spike is building to find out. (Sections 1, 2)
 
 ## Still open
 
