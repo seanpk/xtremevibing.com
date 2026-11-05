@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-11-04"
+updated: "2026-11-05"
 permalink: /loop/
 nav: Loop
 order: 3
@@ -126,7 +126,7 @@ The only gates on the way to production are machine gates: red before green, the
 2. Take the next task. People and harness. Any teammate takes it. They know who it is for, and they may refuse it. The scenario is stated in words, with what this slice may ignore. A defect comes as a recording. **The forecaster** forecasts a budget with that person. (Sections 1, 8, 13)
 3. Build to find out, if we do not yet know what to build. Parallel prototypes, if the direction is uncertain and worth testing a few ways. Harness and people. Only when the scenario does not settle the design, and a wrong design would be felt in use. Agents build three running versions that differ on one named axis. At least two people name which difference mattered, with a user when one can be reached. One is chosen, or none. The choice is restated as the scenario. The pick may be kept as the build for the slice, or thrown away. The other runs are discarded. A prototype may run in production for a few real users when that is the only way to learn; at the pick, only the pick may stay, and only through a slice. (Sections 2, 9)
 4. Or an exploration, if the scenario is not yet clear. People and an agent. A person gets creative with an agent and builds real code to experience, with real users trying it in the best case. When the behavior is right, the person writes the scenario from what runs. The slice and its budget start there. (Sections 1, 2)
-5. Red first. Harness. **The scenario agent**, never the maker, makes the scenario executable, as a Playwright trace or an API sequence, and shows it fails before the fix. It may mark tests that only prove this slice was done. Those markings are part of the red the originator accepts. When a pick or an exploration is kept, it never sees that build: the red fails on the base, then runs against the build, and a failure there goes back to the maker as a miss against the scenario. (Sections 1, 19)
+5. Red first. Harness. **The scenario agent**, never the maker, makes the scenario executable, as a Playwright trace or an API sequence, and shows it fails before the fix. It may mark tests that only prove this slice was done. Those markings are part of the red the originator accepts. When a pick or an exploration is kept, it never sees that build: the red fails on the base, then runs against the build, and a failure there goes back to the maker as a miss against the scenario. A refactor slice changes no behavior and writes no new red: the existing suite, green at the start, is its red. (Sections 1, 19)
 6. Make it work. Harness. **The maker** builds behind the wall, or takes the kept build and makes the red pass. Green means the new scenario plus every existing test. The maker may move an old test when the scenario forces it, and records why. If the budget runs out, green or not, the work stops and a person decides. (Sections 1, 13)
 7. Make it right, then guard. Harness. **The cleaner**, in a separate context, fixes structure and style against the standards file and commits the fix. It keeps changes to old tests small and rejects a real test turned fake. After green it removes the tests marked slice-only, with a record. Structure and behavior do not ride in one pass. **The guardian**, in a third context, checks for a shape change, a pitch contradiction, a changed test, any new test that should join the wall or leave it, and what the change does to the shared operating picture. A shape change or pitch contradiction stops the change for two people. Changed tests, picture changes, and recommendations on which new tests stay go in the packet to the person who set the work going, who may opt into a conversation. **Security and usability agents** give findings. None of them merge. (Sections 1, 3, 14)
 8. Fast build. Harness. The merge waits on a suite that returns in minutes. A skipped or timed-out suite is a failed build. (Section 11)
@@ -149,6 +149,8 @@ The watch does not decide these. They are its standing orders. It stops and puts
 | A slow check fails after merge | No person. The main line reverts and a new defect enters the value queue. | 11 |
 
 A miss against the slice's own scenario is not a stop. When the guardian proves the slice does not yet do what its scenario says, the watch sends it back to the step that missed and records why. The originator decided this when they accepted the scenario. The budget and a stall still stop it. A finding outside the scenario, or a fix that would change the scenario, is a stop. (Section 19)
+
+An answer may be an exact edit. When a stop offers the old text and the new, and the person picks it, the watch makes that edit and names who directed it. It never words a change itself, and the edit changes no behavior. The suite and the standing orders run again, and the packet gets a line for the edit. (Section 19)
 
 A team of one runs the same stops. A stop for two people still waits; one person answers it, and the record says one person decided. (Section 20)
 

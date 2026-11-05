@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The agents"
 description: "The seven kinds of agent in Xtreme Vibing, the watch that runs the pipeline, and how they work with people."
-updated: "2026-11-04"
+updated: "2026-11-05"
 permalink: /agents/
 nav: Agents
 order: 4
@@ -50,6 +50,8 @@ What it never does: merge, rank the value queue, settle a shape, edit the pitch,
 
 It does send a slice back, without a stop, when the guardian proves the slice misses its own scenario. The originator settled that when they accepted the scenario. The watch records why. The budget and a stall still stop it, and a finding outside the scenario goes to a person.
 
+It also makes a change a person has already decided, word for word. At a stop, an option may show the exact edit, the old text and the new, such as a test rename or a changelog line. When the person picks it, the watch makes that edit in its own commit and names who directed it. It never words a change itself, and the edit changes no behavior. The suite runs again, and the packet gets a line for the edit. (Section 19)
+
 The watch has standing orders for three seats:
 
 | Seat | The watch wakes them for |
@@ -66,7 +68,7 @@ Each agent runs in its own context. It sees its brief, what the watch gives it, 
 
 **The scenario agent.** It makes the scenario executable, as a Playwright trace or an API sequence, and shows it fail before the fix. It may mark tests that only prove this slice was done; those markings are part of the red the person who set the work going accepts. For a defect it starts from a recording. For a new feature it starts from words, and the first passing run is watched by a person, who adds the case they only noticed by seeing the wrong thing. When the person built to find out first, and kept the pick or the exploration, it gets the scenario and never that build: its red fails on the base, then runs against the build, and a failure there goes back to the maker. It is never the maker. A context that writes the red and then makes it green is agreeing with itself. (Section 1)
 
-**The maker.** It makes it work, behind the test wall. Green means the new scenario plus every existing test. It may move an old test when the scenario forces it, and it records which assertion moved and why. An unrecorded change or deletion is the cheat. If the budget runs out without green, it stops. It does not renovate. With a prototype brief it builds one of three running versions that differ on one named axis, with no wall and a loose model; that context is never the one that builds the pick. When the pick, or an exploration, is kept, the maker takes it as the build and makes the red pass. (Sections 1, 2, 5, 13)
+**The maker.** It makes it work, behind the test wall. Green means the new scenario plus every existing test. It may move an old test when the scenario forces it, and it records which assertion moved and why. An unrecorded change or deletion is the cheat. If the budget runs out without green, it stops. It does not renovate. With a prototype brief it builds one of three running versions that differ on one named axis, with no wall and a loose model; that context is never the one that builds the pick. When the pick, or an exploration, is kept, the maker takes it as the build and makes the red pass. On a refactor slice, which changes no behavior, it restructures and renames what the scenario names, and the existing suite is the red. (Sections 1, 2, 5, 13)
 
 **The cleaner.** It makes it right. In a separate context, it fixes structure and style against the standards file and commits the fix. It keeps changes to old tests as small as they can be, and it rejects a real test turned into a fake one. After green it removes the tests the scenario agent marked slice-only, with a record of the assertion and why. A structural change and a behavior change do not ride in the same pass. It holds the standards file: rules earned by repeated misses, applied without a person approving each fix. It never adds or removes a standard; a standard enters when the person who set the work going accepts it from the packet. A cleanup that would add an abstraction is not a cleanup. It is a shape proposal, and it goes to people. (Sections 1, 5, 14)
 
@@ -100,7 +102,7 @@ An example from use. In xv-agents v0.3, [one slice record](https://github.com/se
 
 A change to an agent's brief, its may-not list, a standing order, or any check it is judged by is Decide from evidence by default: two people, written down short. A team may name cases where Lead with conviction is the better answer, and naming a case is itself a two-person decision. One learned rule inside the current brief is one person's call. An agent never accepts its own change.
 
-What a team adds to shape the agents for its own system is the project layer: project-local, committed in the repo, shared by everyone on the project and every harness they use. It is add-only against the core: it may add a rule, a fact, an example, or a standing order, and it may not relax the contexts kept apart, the scenario agent is never the maker, the recorded move, the guardian's four checks, the stops, or the may-not lists. Each entry carries the miss it came from, and the entries are read before a burst and as it ends; one whose miss no longer happens without it is deleted. (Sections 16, 19)
+What a team adds to shape the agents for its own system is the project layer: project-local, committed in the repo, shared by everyone on the project and every harness they use. It is add-only against the core: it may add a rule, a fact, an example, or a standing order, and it may not relax the contexts kept apart, the scenario agent is never the maker, the recorded move, the guardian's five checks, the stops, or the may-not lists. Each entry carries the miss it came from, and the entries are read before a burst and as it ends; one whose miss no longer happens without it is deleted. (Sections 16, 19)
 
 ## Left to the team
 
