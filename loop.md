@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-11-05"
+updated: "2026-11-06"
 permalink: /loop/
 nav: Loop
 order: 3
@@ -62,6 +62,7 @@ flowchart TB
     explore["An exploration<br/>a person with an agent, users when possible"]
     choose["Choose one, or none<br/>two people"]
     decide["Person decides<br/>budget, tests, or the picture"]
+    sortie["A sortie<br/>the originator joins a step, with its agent"]
     shape["Decide the shape<br/>in conversation"]
     merge["Accept and merge<br/>originator, no approver"]
   end
@@ -105,15 +106,18 @@ flowchart TB
   maker -. "budget spent" .-> decide
   guardian -. "tests or the picture changed, shape did not" .-> decide
   guardian -. "shape change, pitch contradiction, or an exception" .-> shape
+  decide -. "take it in hand" .-> sortie
+  sortie -. "the scenario changed: red again, blind" .-> red
+  sortie -. "the build changed: clean, then guard" .-> cleaner
 
   classDef people fill:#e0f1ef,stroke:#0d6a66,color:#1a2126
   classDef harness fill:#ffffff,stroke:#56626b,color:#1a2126
   classDef use fill:#fbefdc,stroke:#9a5a00,color:#1a2126
   classDef cond stroke-dasharray:5 4
-  class picture,rank,take,explore,choose,decide,shape,merge people
+  class picture,rank,take,explore,choose,decide,sortie,shape,merge people
   class protos,red,maker,cleaner,guardian,build,deploy,slow harness
   class users,feedback,packet use
-  class choose,decide,shape,protos,explore cond
+  class choose,decide,sortie,shape,protos,explore cond
 ```
 
 The only gates on the way to production are machine gates: red before green, the test wall, the three agents, and a build that returns in minutes. People sit on the side paths, where a decision changes the pitch or the shape, or where tests or the picture moved and one person accepts it.
@@ -129,6 +133,9 @@ The only gates on the way to production are machine gates: red before green, the
 5. Red first. Harness. **The scenario agent**, never the maker, makes the scenario executable, as a Playwright trace or an API sequence, and shows it fails before the fix. It may mark tests that only prove this slice was done. Those markings are part of the red the originator accepts. When a pick or an exploration is kept, it never sees that build: the red fails on the base, then runs against the build, and a failure there goes back to the maker as a miss against the scenario. A refactor slice changes no behavior and writes no new red: the existing suite, green at the start, is its red. (Sections 1, 19)
 6. Make it work. Harness. **The maker** builds behind the wall, or takes the kept build and makes the red pass. Green means the new scenario plus every existing test. The maker may move an old test when the scenario forces it, and records why. If the budget runs out, green or not, the work stops and a person decides. (Sections 1, 13)
 7. Make it right, then guard. Harness. **The cleaner**, in a separate context, fixes structure and style against the standards file and commits the fix. It keeps changes to old tests small and rejects a real test turned fake. After green it removes the tests marked slice-only, with a record. Structure and behavior do not ride in one pass. **The guardian**, in a third context, checks for a shape change, a pitch contradiction, a changed test, any new test that should join the wall or leave it, and what the change does to the shared operating picture. A shape change or pitch contradiction stops the change for two people. Changed tests, picture changes, and recommendations on which new tests stay go in the packet to the person who set the work going, who may opt into a conversation. **Security and usability agents** give findings. None of them merge. (Sections 1, 3, 14)
+
+A sortie, at any of steps 5 to 7. People and an agent. At any stop or send-back the originator may take a step in hand, with the agent for that step: the scenario agent to get the red right, the maker to get the solution right, the cleaner to put the guardian's findings right, or the cleaner on a piece in the middle of making. The order of the steps holds. The scenario agent's context still never sees the build. If the scenario changed, it is amended and the red runs again, blind. If only the build changed, the cleaner and the guardian follow. The guardian runs fresh after every sortie, with its earlier packet and the diff since. Spend counts against the budget. The record says who went, which step they joined, and where the slice resumed. (Sections 1, 5, 19)
+
 8. Fast build. Harness. The merge waits on a suite that returns in minutes. A skipped or timed-out suite is a failed build. (Section 11)
 9. Accept and merge. People. The person who set the work going, the originator, watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in. No second person approves. That is Ship at will. (Sections 6, 9)
 10. Deploy to production. Harness. Production is the default, in slices small enough to revert. Slow checks run after the merge. If one fails, the pipeline reverts the main line and raises a new defect. The team takes the next task. Nobody stands on the deploy. (Sections 10, 11, 12)
@@ -149,6 +156,8 @@ The watch does not decide these. They are its standing orders. It stops and puts
 | A slow check fails after merge | No person. The main line reverts and a new defect enters the value queue. | 11 |
 
 A miss against the slice's own scenario is not a stop. When the guardian proves the slice does not yet do what its scenario says, the watch sends it back to the step that missed and records why. The originator decided this when they accepted the scenario. The budget and a stall still stop it. A finding outside the scenario, or a fix that would change the scenario, is a stop. (Section 19)
+
+An answer may be a sortie. The originator takes the step in hand with its agent, and the watch records it. The order of the steps holds, and the guardian runs fresh after. (Section 19)
 
 An answer may be an exact edit. When a stop offers the old text and the new, and the person picks it, the watch makes that edit and names who directed it. It never words a change itself, and the edit changes no behavior. The suite and the standing orders run again, and the packet gets a line for the edit. (Section 19)
 
