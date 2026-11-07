@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-11-06"
+updated: "2026-11-07"
 permalink: /loop/
 nav: Loop
 order: 3
@@ -137,9 +137,9 @@ The only gates on the way to production are machine gates: red before green, the
 A sortie, at any of steps 5 to 7. People and an agent. At any stop or send-back the originator may take a step in hand, with the agent for that step: the scenario agent to get the red right, the maker to get the solution right, the cleaner to put the guardian's findings right, or the cleaner on a piece in the middle of making. The order of the steps holds. The scenario agent's context still never sees the build. If the scenario changed, it is amended and the red runs again, blind. If only the build changed, the cleaner and the guardian follow. The guardian runs fresh after every sortie, with its earlier packet and the diff since. Spend counts against the budget. The record says who went, which step they joined, and where the slice resumed. (Sections 1, 5, 19)
 
 8. Fast build. Harness. The merge waits on a suite that returns in minutes. A skipped or timed-out suite is a failed build. (Section 11)
-9. Accept and merge. People. The person who set the work going, the originator, watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in. No second person approves. That is Ship at will. (Sections 6, 9)
+9. Accept and merge. People. The person who set the work going, the originator, watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in, or take the slice over with a record and merge as its originator. No second person approves. That is Ship at will. (Sections 6, 9, 19)
 10. Deploy to production. Harness. Production is the default, in slices small enough to revert. Slow checks run after the merge. If one fails, the pipeline reverts the main line and raises a new defect. The team takes the next task. Nobody stands on the deploy. (Sections 10, 11, 12)
-11. Back to the shared operating picture. Real use and people. Telemetry, errors, and user feedback bring the change back. **The listener** gathers the packet. People read it and sit with users. A ranking or shape decision with neither a recent session nor a packet from real use is void. When production raises its hand, the person who set the work going answers first, and any teammate may answer in their place. (Sections 3, 9, 12)
+11. Back to the shared operating picture. Real use and people. Telemetry, errors, and user feedback bring the change back. **The listener** gathers the packet. People read it and sit with users. A ranking or shape decision with neither a recent session nor a packet from real use is void. When production raises its hand, the person who set the work going answers first, and any teammate may answer in their place. Work that starts from the packet inside rules two people set has those two people as its originator. (Sections 3, 9, 12, 19)
 
 ## Where the watch wakes a person
 
@@ -162,6 +162,8 @@ An answer may be a sortie. The originator takes the step in hand with its agent,
 An answer may be an exact edit. When a stop offers the old text and the new, and the person picks it, the watch makes that edit and names who directed it. It never words a change itself, and the edit changes no behavior. The suite and the standing orders run again, and the packet gets a line for the edit. (Section 19)
 
 A team of one runs the same stops. A stop for two people still waits; one person answers it, and the record says one person decided. (Section 20)
+
+A slice is visible to the whole team while it runs. When the originator is away, any teammate may answer a stop in their place, or take the slice over with a record. A two-person stop may be answered provisionally by one person to keep the slice moving; a second person agrees before the merge. (Sections 12, 19)
 
 ## Left out on purpose
 

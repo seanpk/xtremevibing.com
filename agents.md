@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The agents"
 description: "The seven kinds of agent in Xtreme Vibing, the watch that runs the pipeline, and how they work with people."
-updated: "2026-11-06"
+updated: "2026-11-07"
 permalink: /agents/
 nav: Agents
 order: 4
@@ -41,9 +41,9 @@ What it does:
 
 - Knows the state of every slice. What ran, what it made, what it spent, what moved.
 - Calls the next agent with a brief and a fresh context. The forecaster before the work. The scenario agent for red. The maker, the cleaner, and the guardian, one after another. The build. The listener, in production.
-- Keeps the log, and keeps it visible to anyone who needs it. The log is one slice record per slice, with named fields: the scenario, who set the work going, the forecast, the wall baseline, moved tests and why, the cleaner's commit, the guardian's packet, the actual spend, each stop raised and who answered, the decision record. The home of the record is the team's: a file in the repo, a pull request, an issue.
+- Keeps the log, and keeps it visible to the whole team while the slice runs. The log is one slice record per slice, with named fields: the scenario, who set the work going, the forecast, the wall baseline, moved tests and why, the cleaner's commit, the guardian's packet, the actual spend, each stop raised and who answered, the decision record. The home of the record is the team's: a file in the repo, a pull request, an issue.
 - Wakes a person on a standing order. The orders are the stops in the loop ([the loop](/loop/), "Where the watch wakes a person"), and they are scripts, not prose, so a check can fail and CI can run it. A check that cannot run is not a pass; it is a stop. On a stop the watch writes the record, puts the question in front of the seat, and ends its turn with its context kept. The packet from production does not wait; the watch hands it over and goes on.
-- Is started by a person, from their own session: "run this slice". A headless form runs the same steps where there is nobody to wait for, as in CI, and exits with the packet. The slice record carries the resume either way.
+- Is started by a person, from their own session: "run this slice". A headless form runs the same steps where there is nobody to wait for, as in CI, and exits with the packet. The slice record carries the resume either way, so a slice can start at one desk and finish at another, or in CI.
 - Records who took part in a decision, so the team knows who holds the context. Not for blame. (Section 6)
 - Opens a sortie when the originator takes a step in hand, records who went and where the slice resumed, and closes it. It does not do the work. (Section 19)
 
@@ -77,7 +77,7 @@ Each agent runs in its own context. It sees its brief, what the watch gives it, 
 
 **Build and deploy.** Not an agent. The pre-merge suite returns in minutes, or the build has failed. After the merge, production is the default. Slow checks run after; a failure reverts the main line and raises a defect. Nobody stands on the deploy. (Sections 10, 11)
 
-**The listener.** In production, it gathers telemetry, errors, and the feedback users give, structured and unstructured, into the packet: complaints against the runs, paths no story describes, places the pitch and the behavior diverge. The chief engineer reads the packet and does not hold the corpus. The listener may not rank from it. (Section 9)
+**The listener.** In production, it gathers telemetry, errors, and the feedback users give, structured and unstructured, into the packet: complaints against the runs, paths no story describes, places the pitch and the behavior diverge. The chief engineer reads the packet and does not hold the corpus. The listener may not rank from it. Where its packet starts a fix inside rules the team set, the two people who set the rules are the originator for every change that starts that way, and widening a rule takes two people. (Sections 9, 19)
 
 ## A sortie
 
@@ -95,9 +95,9 @@ The team may run more agents, or more than one of each kind. The contexts stay s
 
 People sit in three seats, and the watch knows which seat an order goes to.
 
-The person who set the work going works with the forecaster before the slice, watches the first run of a new feature, accepts the red, moved tests, recommendations on which tests stay, and changes to the picture, merges when the suite is green and nothing stopped, and answers production first. They may take a step in hand in a sortie. Any teammate may stand in. (Sections 1, 3, 9, 12, 19)
+The person who set the work going works with the forecaster before the slice, watches the first run of a new feature, accepts the red, moved tests, recommendations on which tests stay, and changes to the picture, merges when the suite is green and nothing stopped, and answers production first. They may take a step in hand in a sortie. When they are away, any teammate may answer a stop in their place, or take the slice over with a record naming both and why; from then on the teammate is the originator. Taking a slice over only to merge is allowed. (Sections 1, 3, 6, 9, 12, 19)
 
-Two or more people decide from evidence on the packet: which prototype, or none; the shape; a contradiction of the pitch. The decision is written down short, with who took part, and binds later agents. A team of one declares it: the same stops wait, one person answers, and the record says one person decided. (Sections 2, 3, 6, 7, 20)
+Two or more people decide from evidence on the packet: which prototype, or none; the shape; a contradiction of the pitch. The decision is written down short, with who took part, and binds later agents. One person may answer a two-person stop provisionally, to keep the slice moving; a second person agrees before the merge, or reopens it. A team of one declares it: the same stops wait, one person answers, and the record says one person decided. (Sections 2, 3, 6, 7, 20)
 
 The chief engineer sits with users and reads the packet, and ranks the value queue from both. A ranking with neither is void. (Sections 8, 9)
 
