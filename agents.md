@@ -15,7 +15,7 @@ Section numbers point into the working notes behind these pages. The notes are n
 
 Agents write the code. People decide. XV names seven kinds of agent. Each runs in its own context, with a brief for one job. None of them merges, ranks, or settles the shape. One of them, the watch, runs the pipeline: it calls the others in turn, keeps the record of what they did, and puts a decision in front of a person when a standing order says so. This page says what each agent does, what it may not do, and how the set works with people. The loop they run is [the loop](/loop/). The skills, scripts and CI examples that implement them are public, with the mechanics in the README: [github.com/seanpk/xv-agents](https://github.com/seanpk/xv-agents).
 
-![The watch sits between the people and the agents. It calls each agent in turn and takes every result into the log. On a standing order it puts a decision in front of a person. It never decides.](/images/agents-watch.svg)
+![The watch sits between the people and the agents. It calls each agent in turn and takes every result into the log. On a standing order it puts a decision in front of a person. On a deputation it acts in that person's name.](/images/agents-watch.svg)
 
 ## Own the result
 
@@ -29,7 +29,7 @@ An agent may write the tests, write all of the code, and deploy to production. I
 - change the system's structure or its contracts (the shape, and the old tests on the wall);
 - change what users experience without evidence from real use (Go and see).
 
-The rule that holds this in place is short: an agent may stop; it may not decide. The harness is built to hand back, not to approve. There is no agent that says yes. The other stops in the loop, a spent budget, a stall, a check that cannot run, keep that rule when the work itself goes wrong.
+The harness is built to hand back, not to approve. There is no agent that says yes. The watch wakes a person on its standing orders, and does in a person's name only what that person deputized it to do. The other stops in the loop, a spent budget, a stall, a check that cannot run, hand back too when the work itself goes wrong.
 
 The other side of the rule is Ship at will. When the conditions are met, nobody else has to say yes either. The person who set the work going, the originator, merges and picks the moment.
 
@@ -42,12 +42,12 @@ What it does:
 - Knows the state of every slice. What ran, what it made, what it spent, what moved.
 - Calls the next agent with a brief and a fresh context. The forecaster before the work. The scenario agent for red. The maker, the cleaner, and the guardian, one after another. The build. The listener, in production.
 - Keeps the log, and keeps it visible to the whole team while the slice runs. The log is one slice record per slice, with named fields: the scenario, who set the work going, the forecast, the wall baseline, moved tests and why, the cleaner's commit, the guardian's packet, the actual spend, each stop raised and who answered, the decision record. The home of the record is the team's: a file in the repo, a pull request, an issue.
-- Wakes a person on a standing order. The orders are the stops in the loop ([the loop](/loop/), "Where the watch wakes a person"), and they are scripts, not prose, so a check can fail and CI can run it. A check that cannot run is not a pass; it is a stop. On a stop the watch writes the record, puts the question in front of the seat, and ends its turn with its context kept. The packet from production does not wait; the watch hands it over and goes on.
+- Wakes a person on a standing order, or acts on a deputation in that person's name. The orders are the stops in the loop ([the loop](/loop/), "Where the watch wakes a person"), and they are scripts, not prose, so a check can fail and CI can run it. A check that cannot run is not a pass; it is a stop. On a stop the watch writes the record, puts the question in front of the seat, and ends its turn with its context kept. The packet from production does not wait; the watch hands it over and goes on.
 - Is started by a person, from their own session: "run this slice". A headless form runs the same steps where there is nobody to wait for, as in CI, and exits with the packet. The slice record carries the resume either way, so a slice can start at one desk and finish at another, or in CI.
 - Records who took part in a decision, so the team knows who holds the context. Not for blame. (Section 6)
 - Opens a sortie when the originator takes a step in hand, records who went and where the slice resumed, and closes it. It does not do the work. (Section 19)
 
-What it never does: merge, rank the value queue, settle a shape, edit the pitch, raise a budget, or edit its own standing orders. If it did any of these, it would be the approve button the method left out, or the product owner it dropped.
+What it never does: rank the value queue, settle a shape, edit the pitch, raise a budget, or edit its own standing orders or deputations. It merges only on a deputation, and that is the person's merge, by the watch's hands. If it did any of these, it would be the approve button the method left out, or the product owner it dropped.
 
 It does send a slice back, without a stop, when the guardian proves the slice misses its own scenario. The originator settled that when they accepted the scenario. The watch records why. The budget and a stall still stop it, and a finding outside the scenario goes to a person.
 
@@ -60,6 +60,16 @@ The watch has standing orders for three seats:
 | The person who set the work going (the originator) | The budget is spent, green or not. A check cannot run. A stall: repeated failures or a diff that keeps growing, on this slice. An old test or the shared operating picture moved and the shape did not, or the guardian recommends a test join or leave the wall. The suite is green and nothing stopped: the merge is theirs. (Sections 1, 3, 5, 13, 15) |
 | Two or more people | Three prototypes are ready to pick from, or none. A shape change, or a contradiction of the pitch. A budget past the limit the team agreed, or a shape change wider than the slice expected. (Sections 2, 3, 6, 13) |
 | The chief engineer, with users | The packet from real use. A slow check failed after the merge: the main line reverted on its own, and a defect joined the value queue. (Sections 9, 11) |
+
+The standing orders say when to wake a person. A second list, the deputations, says what the watch does without waking one. A deputation names a kind of stop and either the answer the watch gives, or that the watch decides it. The merge may be deputized: a bug of a kind the team names may go all the way through to the merge with no person at it, and that is the person's merge, by the watch's hands. The watch records every deputized stop and names the deputation. The person who wrote it owns the result and answers first when production raises its hand on a change merged under it.
+
+A deputation is written by whoever could answer that stop alone. The originator may write one for their own slice or for all their slices, in their own name, the merge included. A stop that takes two people takes two to deputize. The team's deputations are the set every slice starts from; a developer's add to them; a slice's add to those. A deputation enters only when a person writes it, from a retro that shows the same stop answered the same way, or from their own eye. The watch never writes or proposes one, and the retro counts how often each fires.
+
+The right to decide a kind of stop is earned from the record, not claimed: the watch's pick on that kind matched the person a set number of times in a row. A confidence number the model reports does not count. The record marks every stop the watch decided, so anyone can reopen it.
+
+Three deputations are in the core from day one. The forecast is the budget, and the slice starts on it with no stop unless the forecast is past the team's limit, far from the estimation guide's actuals for like slices, or the originator set another. A step that died on a usage or login limit runs again. A stop raised by a tool bug the team has named passes until the bug is fixed. A team may add the listener's: which observations become an issue on the value queue with no person at it, and which become a fix that merges. Filing is not ranking.
+
+No deputation settles ranking, a shape, a pitch edit, a changed picture, a raised budget, or a change to a brief, a standing order, or a deputation. Those stop for a person. (Section 19)
 
 ## The agents, in the order of one turn
 

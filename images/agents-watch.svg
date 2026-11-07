@@ -1,4 +1,4 @@
-<svg viewBox="0 0 1280 880" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The watch sits between the people and the agents. It calls each agent in turn and takes every result into the log. On a standing order it wakes a person and waits. It never decides." font-family="Iowan Old Style, Palatino Linotype, Palatino, P052, Liberation Serif, DejaVu Serif, Georgia, serif">
+<svg viewBox="0 0 1280 880" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The watch sits between the people and the agents. It calls each agent in turn and takes every result into the log. On a standing order it wakes a person and waits. On a deputation it acts in that person's name." font-family="Iowan Old Style, Palatino Linotype, Palatino, P052, Liberation Serif, DejaVu Serif, Georgia, serif">
   <defs>
     <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#5b2d82"/>
@@ -77,7 +77,7 @@
   <text class="who harness" x="190" y="392">keeps the deck while the captain sleeps</text>
   <text class="line" x="64" y="426">Knows the state of every slice: what ran, what it made, what it spent, what moved.</text>
   <text class="line" x="64" y="454">Calls the next agent with a brief and a fresh context. Keeps the log, visible to anyone who needs it.</text>
-  <text class="line" x="64" y="482">Wakes a person on a standing order. A stop waits; the packet does not. Records who took part. It never decides.</text>
+  <text class="line" x="64" y="482">Wakes a person on a standing order. A stop waits; the packet does not. Acts on a deputation in that person's name.</text>
 
   <!-- Calls: the watch calls each agent, every result returns to the log -->
   <path class="arrow" d="M125,518 L125,598" marker-start="url(#arr)" marker-end="url(#arr)"/>

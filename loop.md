@@ -14,7 +14,7 @@ mermaid: true
 
 Section numbers point into the working notes behind these pages. The notes are not published.
 
-Agents write the code. People rank the work, keep the pitch, sit with users, and decide the shape. The harness enforces the rest. The harness is the agents, the test suite, and the pipeline. The watch is the agent that runs the pipeline: it calls each agent in turn, keeps the log, and wakes a person on a standing order. It never decides. The agents are drawn in [the agents](/agents/). Nobody approves the merge, and work finishes in production.
+Agents write the code. People rank the work, keep the pitch, sit with users, and decide the shape. The harness enforces the rest. The harness is the agents, the test suite, and the pipeline. The watch is the agent that runs the pipeline: it calls each agent in turn, keeps the log, and wakes a person on a standing order. What it does without waking one, it does on a deputation, in that person's name. The agents are drawn in [the agents](/agents/). Nobody approves the merge, and work finishes in production.
 
 ## Before the work starts
 
@@ -47,7 +47,7 @@ The loop is Boyd's OODA loop, simplified: four moves, and in each one both peopl
 
 ![The four moves, with what people do and what the harness does in each](/images/loop-moves.svg)
 
-The factory is the Act move only (section 17). The constraint on the loop is steering, not build speed. The watch stops inside Act and wakes a person when the budget is spent, a test or the picture changed, or the shape or the pitch would change. That is Own the result: even when agents write all of the code, a person is responsible for what it does, so the harness may stop and may not decide.
+The factory is the Act move only (section 17). The constraint on the loop is steering, not build speed. The watch stops inside Act and wakes a person when the budget is spent, a test or the picture changed, or the shape or the pitch would change. That is Own the result: even when agents write all of the code, a person is responsible for what it does, so the harness hands back, and does on its own only what a person deputized it to do.
 
 ## The loop
 
@@ -127,7 +127,7 @@ The only gates on the way to production are machine gates: red before green, the
 **The watch** calls every harness step below, in turn, each agent in a fresh context, and takes the result into the log. Where a step says a person decides, the watch has woken them and is waiting.
 
 1. Rank the value queue. People. One person ranks by customer value, so the product stays one product. A conflict between users and the people paying stops the ranking and leaves the team. (Section 8)
-2. Take the next task. People and harness. Any teammate takes it. They know who it is for, and they may refuse it. The scenario is stated in words, with what this slice may ignore. A defect comes as a recording. **The forecaster** forecasts a budget with that person. (Sections 1, 8, 13)
+2. Take the next task. People and harness. Any teammate takes it. They know who it is for, and they may refuse it. The scenario is stated in words, with what this slice may ignore. A defect comes as a recording. **The forecaster** forecasts a budget with that person, and the forecast is the budget unless a check says it is far off. (Sections 1, 8, 13)
 3. Build to find out, if we do not yet know what to build. Parallel prototypes, if the direction is uncertain and worth testing a few ways. Harness and people. Only when the scenario does not settle the design, and a wrong design would be felt in use. Agents build three running versions that differ on one named axis. At least two people name which difference mattered, with a user when one can be reached. One is chosen, or none. The choice is restated as the scenario. The pick may be kept as the build for the slice, or thrown away. The other runs are discarded. A prototype may run in production for a few real users when that is the only way to learn; at the pick, only the pick may stay, and only through a slice. (Sections 2, 9)
 4. Or an exploration, if the scenario is not yet clear. People and an agent. A person gets creative with an agent and builds real code to experience, with real users trying it in the best case. When the behavior is right, the person writes the scenario from what runs. The slice and its budget start there. (Sections 1, 2)
 5. Red first. Harness. **The scenario agent**, never the maker, makes the scenario executable, as a Playwright trace or an API sequence, and shows it fails before the fix. It may mark tests that only prove this slice was done. Those markings are part of the red the originator accepts. When a pick or an exploration is kept, it never sees that build: the red fails on the base, then runs against the build, and a failure there goes back to the maker as a miss against the scenario. A refactor slice changes no behavior and writes no new red: the existing suite, green at the start, is its red. (Sections 1, 19)
@@ -143,7 +143,7 @@ A sortie, at any of steps 5 to 7. People and an agent. At any stop or send-back 
 
 ## Where the watch wakes a person
 
-The watch does not decide these. They are its standing orders. It stops and puts the decision in front of a person. That is Own the result: a person is responsible for every change, including one made entirely by agents.
+The watch does not decide these. They are its standing orders. It stops and puts the decision in front of a person, or acts on a deputation in a person's name. That is Own the result: a person is responsible for every change, including one made entirely by agents.
 
 | The watch sees | What happens | Section |
 | --- | --- | --- |
@@ -160,6 +160,8 @@ A miss against the slice's own scenario is not a stop. When the guardian proves 
 An answer may be a sortie. The originator takes the step in hand with its agent, and the watch records it. The order of the steps holds, and the guardian runs fresh after. (Section 19)
 
 An answer may be an exact edit. When a stop offers the old text and the new, and the person picks it, the watch makes that edit and names who directed it. It never words a change itself, and the edit changes no behavior. The suite and the standing orders run again, and the packet gets a line for the edit. (Section 19)
+
+A stop may be deputized. Beside the standing orders is a second list, the deputations: what the watch does without waking a person. A deputation names a kind of stop and the answer the watch gives, or lets the watch decide it once the record shows its pick matched the person enough times in a row. The merge may be deputized for a change of a named kind, and it is the person's merge by the watch's hands. The person who wrote the deputation owns the result; the originator may write one for their own slices, and a two-person stop takes two. The record names the deputation at every such stop. No deputation settles a change to the pitch, the shape, or the picture. (Section 19)
 
 A team of one runs the same stops. A stop for two people still waits; one person answers it, and the record says one person decided. (Section 20)
 
