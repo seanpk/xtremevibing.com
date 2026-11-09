@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-11-08"
+updated: "2026-11-09"
 permalink: /loop/
 nav: Loop
 order: 3
@@ -40,7 +40,7 @@ The loop is Boyd's OODA loop, simplified: four moves, and in each one both peopl
 
 | Move | People | The harness |
 | --- | --- | --- |
-| Observe | Sit with users. Contact is the act. | The listener gathers telemetry, monitoring, errors, and feedback into the field report. |
+| Observe | Sit with users. Contact is the act. | The field listener gathers telemetry, monitoring, errors, and feedback into the field report. |
 | Orient | Hold the shared operating picture, the pitch, and the shape. | Holds the test suite, what must stay true; the standards, what we have learned; and the watch's log, what was done. |
 | Decide | Rank the value queue. State the scenario. Choose a prototype, or none. Decide the shape, in conversation. Decide from evidence and Lead with conviction say which of these takes two people and which takes one. | Enforces what a test or a standard settles. The watch stops and asks. It does not decide. |
 | Act | Watch the first run. Accept and merge. No second approver. | The test writer shows red. The maker, the cleaner, the inspector. Build, deploy, revert. |
@@ -81,7 +81,7 @@ flowchart TB
     slow["Slow checks<br/>after the merge"]
     users["Users<br/>the slice is in use"]
     feedback["Feedback<br/>telemetry, errors"]
-    packet["The packet<br/>the listener gathers it"]
+    packet["The packet<br/>the field listener gathers it"]
   end
 
   picture --> rank --> take
@@ -139,7 +139,7 @@ A pairing, at any of steps 5 to 7. People and an agent. At any stop or send-back
 8. Fast build. Harness. The merge waits on a suite that returns in minutes. A skipped or timed-out suite is a failed build. (Section 11)
 9. Accept and merge. People. The person who set the work going, the originator, watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in, or take the slice over with a record and merge as its originator. No second person approves. That is Ship at will. (Sections 6, 9, 19)
 10. Deploy to production. Harness. Production is the default, in slices small enough to revert. Slow checks run after the merge. If one fails, the pipeline reverts the main line and raises a new defect. The team takes the next task. Nobody stands on the deploy. (Sections 10, 11, 12)
-11. Back to the shared operating picture. Real use and people. Telemetry, errors, and user feedback bring the change back. **The listener** gathers the field report. People read it and sit with users. A ranking or shape decision with neither a recent session nor a field report from real use is void. When production raises its hand, the person who set the work going answers first, and any teammate may answer in their place. Work that starts from the field report inside rules two people set has those two people as its originator. (Sections 3, 9, 12, 19)
+11. Back to the shared operating picture. Real use and people. Telemetry, errors, and user feedback bring the change back. **The field listener** gathers the field report. People read it and sit with users. A ranking or shape decision with neither a recent session nor a field report from real use is void. When production raises its hand, the person who set the work going answers first, and any teammate may answer in their place. Work that starts from the field report inside rules two people set has those two people as its originator. (Sections 3, 9, 12, 19)
 
 ## Where the watch wakes a person
 

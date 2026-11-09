@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The agents"
 description: "The seven kinds of agent in Xtreme Vibing, the watch that runs the pipeline, and how they work with people."
-updated: "2026-11-08"
+updated: "2026-11-09"
 permalink: /agents/
 nav: Agents
 order: 4
@@ -40,7 +40,7 @@ The watch is the agent that runs the pipeline. The name is from the bridge of a 
 What it does:
 
 - Knows the state of every slice. What ran, what it made, what it spent, what moved.
-- Calls the next agent with a brief and a fresh context. The forecaster before the work. The test writer for red. The maker, the cleaner, and the inspector, one after another. The build. The listener, in production.
+- Calls the next agent with a brief and a fresh context. The forecaster before the work. The test writer for red. The maker, the cleaner, and the inspector, one after another. The build. The field listener, in production.
 - Keeps the log, and keeps it visible to the whole team while the slice runs. The log is one slice record per slice, with named fields: the scenario, who set the work going, the forecast, the wall baseline, moved tests and why, the cleaner's commit, the inspection report, the actual spend, each stop raised and who answered, the decision record. The home of the record is the team's: a file in the repo, a pull request, an issue.
 - Wakes a person on a standing order, or gives a standing answer in that person's name. The orders are the stops in the loop ([the loop](/loop/), "Where the watch wakes a person"), and they are scripts, not prose, so a check can fail and CI can run it. A check that cannot run is not a pass; it is a stop. On a stop the watch writes the record, puts the question in front of the seat, and ends its turn with its context kept. The field report does not wait; the watch hands it over and goes on.
 - Is started by a person, from their own session: "run this slice". A headless form runs the same steps where there is nobody to wait for, as in CI, and exits with the inspection report. The slice record carries the resume either way, so a slice can start at one desk and finish at another, or in CI.
@@ -67,7 +67,7 @@ A standing answer is written by whoever could answer that stop alone. The origin
 
 The right to a "your pick" answer is earned from the record, not claimed: the watch's pick on that kind of stop matched the person a set number of times in a row, and only blind matches count. While a kind of stop is being earned, the watch seals its pick in the record, shows the options in a shuffled order with none marked, and unseals after the person answers. A confidence number the model reports does not count. The record marks every stop the watch decided, so anyone can reopen it.
 
-Three standing answers are in the core from day one. The forecast is the budget, and the slice starts on it with no stop unless the forecast is past the team's limit, far from the estimation guide's actuals for like slices, or the originator set another. A step that died on a usage or login limit runs again. A stop raised by a tool bug the team has named passes until the bug is fixed. A team may add the listener's: which observations become an issue on the value queue with no person at it, and which become a fix that merges. Filing is not ranking.
+Three standing answers are in the core from day one. The forecast is the budget, and the slice starts on it with no stop unless the forecast is past the team's limit, far from the estimation guide's actuals for like slices, or the originator set another. A step that died on a usage or login limit runs again. A stop raised by a tool bug the team has named passes until the bug is fixed. A team may add the field listener's: which observations become an issue on the value queue with no person at it, and which become a fix that merges. Filing is not ranking.
 
 No standing answer settles ranking, a shape, a pitch edit, a changed picture, a raised budget, or a change to a brief or a standing order. Those stop for a person. (Section 19)
 
@@ -87,7 +87,7 @@ Each agent runs in its own context. It sees its brief, what the watch gives it, 
 
 **Build and deploy.** Not an agent. The pre-merge suite returns in minutes, or the build has failed. After the merge, production is the default. Slow checks run after; a failure reverts the main line and raises a defect. Nobody stands on the deploy. (Sections 10, 11)
 
-**The listener.** In production, it gathers telemetry, errors, and the feedback users give, structured and unstructured, into the field report: complaints against the runs, paths no story describes, places the pitch and the behavior diverge. The chief engineer reads the field report and does not hold the corpus. The listener may not rank from it. Where its field report starts a fix inside rules the team set, the two people who set the rules are the originator for every change that starts that way, and widening a rule takes two people. (Sections 9, 19)
+**The field listener.** In production, it gathers telemetry, errors, and the feedback users give, structured and unstructured, into the field report: complaints against the runs, paths no story describes, places the pitch and the behavior diverge. The chief engineer reads the field report and does not hold the corpus. The field listener may not rank from it. Where its field report starts a fix inside rules the team set, the two people who set the rules are the originator for every change that starts that way, and widening a rule takes two people. (Sections 9, 19)
 
 ## A pairing
 

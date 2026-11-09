@@ -134,7 +134,7 @@
   <text class="small" x="916" y="726">A fail reverts.</text>
 
   <rect class="box" x="1072" y="602" width="168" height="150" rx="12"/>
-  <text class="name" x="1088" y="632">Listener</text>
+  <text class="name" x="1088" y="632">Field listener</text>
   <text class="small" x="1088" y="660">Telemetry, errors,</text>
   <text class="small" x="1088" y="682">feedback, into</text>
   <text class="small" x="1088" y="704">the field report.</text>
