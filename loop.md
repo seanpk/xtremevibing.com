@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-11-09"
+updated: "2026-11-11"
 permalink: /loop/
 nav: Loop
 order: 3
@@ -62,7 +62,7 @@ flowchart TB
     explore["An exploration<br/>a person with an agent, users when possible"]
     choose["Choose one, or none<br/>two people"]
     decide["Person decides<br/>budget, tests, or the picture"]
-    pairing["A pairing<br/>the originator joins a step, with its agent"]
+    pairing["A pairing<br/>the originator and the watch, together"]
     shape["Decide the shape<br/>in conversation"]
     merge["Accept and merge<br/>originator, no approver"]
   end
@@ -134,7 +134,7 @@ The only gates on the way to production are machine gates: red before green, the
 6. Make it work. Harness. **The maker** builds behind the wall, or takes the kept build and makes the red pass. Green means the new scenario plus every existing test. The maker may move an old test when the scenario forces it, and records why. If the budget runs out, green or not, the work stops and a person decides. (Sections 1, 13)
 7. Make it right, then guard. Harness. **The cleaner**, in a separate context, fixes structure and style against the standards file and commits the fix. It keeps changes to old tests small and rejects a real test turned fake. After green it removes the tests marked slice-only, with a record. Structure and behavior do not ride in one pass. **The inspector**, in a third context, checks for a shape change, a pitch contradiction, a changed test, any new test that should join the wall or leave it, and what the change does to the shared operating picture. A shape change or pitch contradiction stops the change for two people. Changed tests, picture changes, and recommendations on which new tests stay go in the inspection report to the person who set the work going, who may opt into a conversation. **Security and usability agents** give findings. None of them merge. (Sections 1, 3, 14)
 
-A pairing, at any of steps 5 to 7. People and an agent. At any stop or send-back the originator may take a step in hand, with the agent for that step: the test writer to get the red right, the maker to get the solution right, the cleaner to put the inspector's findings right, or the cleaner on a piece in the middle of making. The order of the steps holds. The test writer's context still never sees the build. If the scenario changed, it is amended and the red runs again, blind. If only the build changed, the cleaner and the inspector follow. The inspector runs fresh after every pairing, with its earlier report and the diff since. Spend counts against the budget. The record says who went, which step they joined, and where the slice resumed. (Sections 1, 5, 19)
+A pairing, at any of steps 5 to 7. A person and the watch. At any stop or send-back the originator may take the slice in hand and pair with the watch, which has the slice's context: to get the red right, the solution right, or the inspector's findings right, in one go. The test writer's red stays blind; a test written or changed in the pairing is not, and the record says so. If the scenario changed, it is amended and the red runs again, blind. If only the build changed, the cleaner and the inspector follow. The inspector runs fresh after every pairing, with its earlier report and the diff since. Spend counts against the budget. The record says who paired, why, the commits, where the slice resumed, and what it spent. (Sections 1, 5, 19)
 
 8. Fast build. Harness. The merge waits on a suite that returns in minutes. A skipped or timed-out suite is a failed build. (Section 11)
 9. Accept and merge. People. The person who set the work going, the originator, watches the first run of a new feature and merges when the suite is green and the three agents find no break that requires a person. Any teammate may stand in, or take the slice over with a record and merge as its originator. No second person approves. That is Ship at will. (Sections 6, 9, 19)
@@ -157,7 +157,7 @@ The watch does not decide these. They are its standing orders. It stops and puts
 
 A miss against the slice's own scenario is not a stop. When the inspector proves the slice does not yet do what its scenario says, the watch sends it back to the step that missed and records why. The originator decided this when they accepted the scenario. The budget and a stall still stop it. A finding outside the scenario, or a fix that would change the scenario, is a stop. (Section 19)
 
-An answer may be a pairing. The originator takes the step in hand with its agent, and the watch records it. The order of the steps holds, and the inspector runs fresh after. (Section 19)
+An answer may be a pairing. The originator takes the slice in hand with the watch, and the watch records it. The inspector runs fresh after. (Section 19)
 
 An answer may be an exact edit. When a stop offers the old text and the new, and the person picks it, the watch makes that edit and names who directed it. It never words a change itself, and the edit changes no behavior. The suite and the standing orders run again, and the inspection report gets a line for the edit. (Section 19)
 
