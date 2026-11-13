@@ -3,7 +3,7 @@
 layout: page.njk
 title: "The delivery loop"
 description: "One turn of the Xtreme Vibing loop: where agents build, where people decide, and where the harness hands back."
-updated: "2026-11-11"
+updated: "2026-11-12"
 permalink: /loop/
 nav: Loop
 order: 3

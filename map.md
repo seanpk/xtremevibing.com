@@ -3,7 +3,7 @@
 layout: page.njk
 title: "Values, principles, and practices"
 description: "The values, principles, and practices of Xtreme Vibing, with the original twelve XP practices mapped to them."
-updated: "2026-11-11"
+updated: "2026-11-12"
 permalink: /map/
 nav: Map
 order: 2
